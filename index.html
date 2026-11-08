@@ -92,6 +92,13 @@ html.anim .slot-b{background:transparent}
 .face{position:absolute; inset:0; border-radius:22px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; box-shadow:0 30px 60px rgba(0,0,0,.5); background:var(--card)}
 .face.back{transform:rotateY(180deg)}
 .face img{width:100%; height:100%; object-fit:cover; transition:opacity .3s}
+/* phones: no travelling card; the photo stays in the hero and "What I do" shows its own picture */
+@media (max-width:760px){
+  html.anim .traveler{display:none}
+  html.anim .slot-a .photo{visibility:visible}
+  html.anim .slot-b > img{visibility:visible}
+  html.anim .slot-b{background:var(--card)}
+}
 
 /* Strip */
 .strip{border-block:1px solid var(--line); background:var(--bg-2); overflow:hidden; padding-block:16px; margin-top:56px}
@@ -685,7 +692,9 @@ $("#copy").addEventListener("click", () => {
   let tiltX = 0, tiltY = 0, flipAngle = 0;
   const applyFlip = () => flipEl.style.transform = `rotateX(${tiltX}deg) rotateY(${flipAngle + tiltY}deg)`;
   const anchor = (el, rot) => { const r = el.getBoundingClientRect(); return { cx: r.left + r.width / 2 + scrollX, cy: r.top + r.height / 2 + scrollY, w: el.offsetWidth, h: el.offsetHeight, rot }; };
+  const phoneHero = matchMedia("(max-width:760px)");
   function placeCard() {
+    if (phoneHero.matches) return;            // phones: the photo stays put (see CSS)
     const A = anchor(slotA, 3), B = anchor(slotB, -3);
     const end = Math.max(1, B.cy - innerHeight / 2);
     const p = clamp(scrollY / end, 0, 1), e = ease(p);
