@@ -98,6 +98,8 @@ html.anim .slot-b{background:transparent}
   html.anim .slot-a .photo{visibility:visible}
   html.anim .slot-b > img{visibility:visible}
   html.anim .slot-b{background:var(--card)}
+  /* no jury photo on phones: the picture only appears once a "What I do" item is opened */
+  .do:not(.has-open) .slot-b{display:none}
 }
 
 /* Strip */
@@ -540,6 +542,7 @@ function showBack(src) {
 document.querySelectorAll("#acc details").forEach(d => d.addEventListener("toggle", () => {
   if (d.open) { document.querySelectorAll("#acc details").forEach(o => { if (o !== d) o.open = false; }); showBack(d.dataset.img || BACK); }
   else if (!document.querySelector("#acc details[open]")) showBack(BACK);
+  document.querySelector(".do").classList.toggle("has-open", !!document.querySelector("#acc details[open]"));
 }));
 
 /* ---- Worlds: each door opens its own page ---- */
