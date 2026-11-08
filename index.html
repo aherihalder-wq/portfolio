@@ -224,6 +224,8 @@ dialog.idc::backdrop{background:rgba(5,6,10,.78); backdrop-filter:blur(6px)}
 .id-actions .btn{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.25)}
 .id-actions .btn.blue{background:var(--blue); border-color:var(--blue)}
 @media (prefers-reduced-motion: reduce){ .lan{animation:none} }
+/* phones: a slightly taller card so the resume side fits without scrolling */
+@media (max-width:480px){ .idcard{aspect-ratio:54/97} .strap{height:clamp(30px, 7vh, 70px)} }
 @media (max-width:860px){ .about-photo{justify-self:start; order:-1; max-width:360px} }
 
 /* Worlds (doors) */
