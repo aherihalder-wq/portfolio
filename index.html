@@ -31,7 +31,9 @@
 [hidden]{display:none !important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
-body{margin:0; background:var(--bg); color:var(--fg); font:400 17px/1.6 var(--f-body); -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative}
+body{margin:0; background:var(--bg); color:var(--fg); font:400 17px/1.6 var(--f-body); -webkit-font-smoothing:antialiased; overflow-x:clip; position:relative}
+/* older browsers without "clip": fall back to hidden on the root so sticky cards still stick */
+@supports not (overflow:clip){ html, body{overflow-x:hidden} }
 body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.07;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img{max-width:100%; display:block}
@@ -275,8 +277,8 @@ dialog.idc::backdrop{background:rgba(5,6,10,.78); backdrop-filter:blur(6px)}
   .doors{flex-direction:column; height:auto; gap:22px}
   .doors:hover .door, .doors .door:hover{flex-grow:1}
   /* phones: the doors stack on top of each other while you scroll, like a deck of cards */
-  .door{position:sticky; top:calc(86px + var(--i, 0) * 14px); min-height:min(64vh, 520px); transform-origin:50% 0;
-    box-shadow:0 -14px 40px rgba(0,0,0,.5); filter:brightness(var(--b, 1)); will-change:transform}
+  .door{position:-webkit-sticky; position:sticky; top:calc(84px + var(--i, 0) * 16px); min-height:min(66vh, 540px); transform-origin:50% 0;
+    box-shadow:0 -16px 44px rgba(0,0,0,.6); filter:brightness(var(--b, 1)); will-change:transform}
 }
 
 /* Toolkit dock: app icons only; they swell as the mouse passes, like a desktop dock */
@@ -707,8 +709,8 @@ $("#copy").addEventListener("click", () => {
       if (!phoneDoors.matches) { d.style.transform = ""; d.style.setProperty("--b", 1); return; }
       const next = doors[i + 1]; let prog = 0;
       if (next) { const top = d.getBoundingClientRect().top, nTop = next.getBoundingClientRect().top; prog = clamp(1 - (nTop - top) / d.offsetHeight, 0, 1); }
-      d.style.transform = `scale(${(1 - prog * 0.08).toFixed(4)})`;
-      d.style.setProperty("--b", (1 - prog * 0.5).toFixed(3));
+      d.style.transform = `scale(${(1 - prog * 0.1).toFixed(4)})`;
+      d.style.setProperty("--b", (1 - prog * 0.55).toFixed(3));
     });
   }
   const onScroll = () => { placeCard(); stackDoors(); ticking = false; };
