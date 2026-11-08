@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aheri Halder · Work</title>
+<meta name="description" content="Projects by Aheri Halder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* One page for each work world (world.html#product or world.html#uiux).
+   Same dark look as the main page; the world's colour (--acc) runs through the title, tags and buttons.
+   Product: calm grid of project cards. UI/UX: projects shown inside browser windows. */
+:root{
+  --bg:#0D0E12; --bg-2:#15171D; --card:#1B1E26; --line:#2A2E39;
+  --fg:#F3F4F7; --fg-2:#A4AAB8;
+  --acc:#2D6AF0; --acc-hi:#5C8EFF;
+  --f-display:"Anton", "Impact", "Arial Narrow Bold", sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+body{margin:0; background:var(--bg); color:var(--fg); font:400 17px/1.6 var(--f-body); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+body::before{content:""; position:fixed; inset:-20% -10% auto; height:70vh; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--acc) 38%, transparent), transparent 65%)}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3{margin:0; font-family:var(--f-display); font-weight:400; text-transform:uppercase; line-height:.9}
+p{margin:0}
+:focus-visible{outline:2px solid var(--acc-hi); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1240px; margin:0 auto; padding-left:max(18px, env(safe-area-inset-left, 0px)); padding-right:max(18px, env(safe-area-inset-right, 0px))}
+.eyebrow{font:500 12px/1.3 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2)}
+.btn{display:inline-flex; align-items:center; gap:.5em; padding:.85em 1.4em; border-radius:999px; font:700 15px/1 var(--f-body); text-decoration:none; border:1.5px solid var(--fg); color:var(--fg); background:transparent; cursor:pointer; transition:transform .3s, background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.acc{background:var(--acc); border-color:var(--acc); color:#fff}
+
+/* arrival: the world's colour covers the screen, then opens as a circle */
+.arrive{position:fixed; inset:0; z-index:150; pointer-events:none; background:var(--acc); clip-path:circle(150% at 50% 50%); animation:open .9s cubic-bezier(.7,0,.3,1) .05s forwards}
+@keyframes open{to{clip-path:circle(0% at 50% 50%)}}
+
+/* top bar */
+.top{position:sticky; top:0; z-index:30; padding-top:calc(14px + env(safe-area-inset-top, 0px)); padding-bottom:14px; background:linear-gradient(var(--bg) 60%, transparent)}
+.top .wrap{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+.back{display:inline-flex; align-items:center; gap:.5em; padding:.7em 1.1em; border-radius:999px; background:var(--bg-2); border:1px solid var(--line); text-decoration:none; font-weight:700; font-size:14px; transition:transform .25s}
+.back:hover{transform:translateX(-4px)}
+.switch{display:flex; gap:4px; padding:4px; border-radius:999px; background:var(--bg-2); border:1px solid var(--line)}
+.switch a{display:flex; align-items:center; gap:7px; padding:.55em .9em; border-radius:999px; text-decoration:none; font-weight:600; font-size:14px; color:var(--fg-2)}
+.switch a i{width:7px; height:7px; border-radius:50%; background:var(--c)}
+.switch a[aria-current="page"]{background:var(--fg); color:var(--bg)}
+@media (max-width:560px){ .switch a span{display:none} .switch a{padding:.65em} .switch a i{width:10px; height:10px} }
+
+/* world header */
+.head{padding-block:50px 40px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px 40px; align-items:end}
+.head .eyebrow{display:flex; align-items:center; gap:10px; color:var(--acc-hi)}
+.head .eyebrow::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--acc)}
+.head h1{font-size:clamp(64px, 12vw, 180px); margin-top:14px}
+.head h1 span{color:var(--acc)}
+.head p{color:var(--fg-2); font-size:19px; max-width:40ch; margin-top:18px}
+.count{font:400 clamp(70px, 10vw, 150px)/.8 var(--f-display); color:transparent; -webkit-text-stroke:1.5px var(--acc); text-align:right}
+.count small{display:block; font:500 12px/1.3 var(--f-mono); letter-spacing:.1em; color:var(--fg-2); -webkit-text-stroke:0; margin-top:10px}
+@media (max-width:700px){ .head{grid-template-columns:1fr} .count{text-align:left} }
+
+/* Product: card grid */
+.grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:44px 32px; padding-bottom:100px}
+@media (max-width:760px){ .grid{grid-template-columns:1fr} }
+.card{display:flex; flex-direction:column; gap:16px; border:0; padding:0; background:none; color:inherit; font:inherit; text-align:left; cursor:pointer}
+.card .pic{position:relative; border-radius:20px; overflow:hidden; aspect-ratio:4/3; background:var(--card)}
+.card .pic img{width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.16,.84,.2,1)}
+.card:hover .pic img{transform:scale(1.05)}
+.card .pic::after{content:"View project →"; position:absolute; left:16px; bottom:16px; font:700 14px/1 var(--f-body); padding:.8em 1.1em; border-radius:999px; background:var(--acc); color:#fff; opacity:0; transform:translateY(10px); transition:opacity .3s, transform .3s}
+.card:hover .pic::after, .card:focus-visible .pic::after{opacity:1; transform:none}
+.card .status{position:absolute; top:14px; left:14px; z-index:1; font:600 12px/1 var(--f-body); padding:.55em .9em; border-radius:999px; background:rgba(0,0,0,.55); backdrop-filter:blur(6px); color:#fff}
+.card .row{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap}
+.card h3{font-size:clamp(32px, 3.6vw, 48px)}
+.card .kind{font:500 12px/1.3 var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--acc-hi)}
+.card p{color:var(--fg-2); max-width:48ch}
+
+/* UI/UX: screen windows */
+.screens{display:flex; flex-direction:column; gap:100px; padding-bottom:110px}
+.srow{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:56px; align-items:center}
+.srow:nth-child(even) .stext{order:2}
+.stext{display:flex; flex-direction:column; align-items:flex-start; gap:16px}
+.tag{display:inline-block; font:600 13px/1 var(--f-body); padding:.55em 1em; border-radius:999px; background:var(--acc); color:#fff}
+.tag.ghost{background:var(--card); color:var(--fg)}
+.tags{display:flex; gap:8px; flex-wrap:wrap}
+.stext h3{font-size:clamp(44px, 6vw, 84px)}
+.stext p{color:var(--fg-2); max-width:44ch}
+.stext ul{margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px}
+.stext li{font:500 12px/1 var(--f-mono); padding:.6em .8em; border:1px solid var(--line); border-radius:8px}
+.window{display:block; width:100%; border:0; padding:0; background:#1F1B2E; border-radius:16px; overflow:hidden; cursor:pointer; box-shadow:0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); transform:perspective(1400px) rotateY(var(--ry,-8deg)) rotateX(3deg); transition:transform .8s cubic-bezier(.16,.84,.2,1)}
+.srow:nth-child(even) .window{--ry:8deg}
+.window:hover{transform:perspective(1400px) rotateY(0) rotateX(0) scale(1.02)}
+.wbar{display:flex; align-items:center; gap:7px; padding:11px 14px; background:#2A2540}
+.wbar i{width:11px; height:11px; border-radius:50%; background:#FF5F57}
+.wbar i:nth-child(2){background:#FEBC2E} .wbar i:nth-child(3){background:#28C840}
+.wbar span{margin-left:10px; flex:1; font:500 12px/1 var(--f-mono); color:rgba(255,255,255,.55); background:rgba(0,0,0,.25); padding:6px 10px; border-radius:6px; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.window img{width:100%; aspect-ratio:16/10; object-fit:cover}
+@media (max-width:860px){ .srow{grid-template-columns:1fr; gap:28px} .srow:nth-child(even) .stext{order:0} .window, .srow:nth-child(even) .window{transform:none} }
+
+/* Phygital Lab: the project sits on a circuit board, with screw pins and a blinking status LED */
+.board{position:relative; display:block; width:100%; border:0; padding:22px; cursor:pointer; border-radius:18px;
+  background:
+    linear-gradient(90deg, transparent 49.5%, rgba(252,211,77,.28) 49.5% 50.5%, transparent 50.5%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 18px),
+    linear-gradient(160deg, #0E7A57, #064E3B);
+  box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 0 0 2px rgba(52,211,153,.35); transition:transform .6s cubic-bezier(.16,.84,.2,1)}
+.board:hover{transform:translateY(-6px) rotate(-.6deg)}
+.board img{position:relative; width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:10px; box-shadow:0 0 0 3px #022C22, 0 12px 30px rgba(0,0,0,.45)}
+.board .pin{position:absolute; width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #FDE68A, #B45309); box-shadow:0 0 0 3px rgba(2,44,34,.8)}
+.board .pin.tl{top:6px; left:6px}.board .pin.tr{top:6px; right:6px}.board .pin.bl{bottom:6px; left:6px}.board .pin.br{bottom:6px; right:6px}
+.board .led{position:absolute; right:30px; bottom:3px; width:8px; height:8px; border-radius:50%; background:#34D399; box-shadow:0 0 10px #34D399; animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* other worlds */
+.next{border-top:1px solid var(--line); padding-block:60px 70px}
+.next .wrap{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap}
+.next h2{font-size:clamp(36px, 5vw, 64px)}
+.next .links{display:flex; gap:10px; flex-wrap:wrap}
+.next .links a{display:inline-flex; align-items:center; gap:8px; padding:.9em 1.3em; border-radius:999px; border:1.5px solid var(--line); text-decoration:none; font-weight:700; transition:border-color .2s, transform .3s}
+.next .links a:hover{border-color:var(--c); transform:translateY(-2px)}
+.next .links a i{width:9px; height:9px; border-radius:50%; background:var(--c)}
+footer{border-top:1px solid var(--line); background:var(--bg-2)}
+footer .wrap{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-block:24px; color:var(--fg-2); font-size:14px}
+footer a{text-decoration:none}
+
+/* entrance */
+.rise{animation:rise 1s cubic-bezier(.16,.84,.2,1) both; animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0; transform:translateY(40px)}}
+
+/* Case study: a full reading view.
+   Layout per step: a sticky label column (step number + heading) beside the text, pictures underneath. */
+dialog.case{width:min(1180px, calc(100% - 20px)); height:calc(100% - 20px); max-height:none; padding:0; border:1px solid var(--line); border-radius:22px; background:var(--bg-2); color:var(--fg); box-shadow:0 40px 90px rgba(0,0,0,.6)}
+dialog.case[open]{animation:pop .5s cubic-bezier(.16,.84,.2,1)}
+dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
+@keyframes pop{from{opacity:0; transform:translateY(40px) scale(.97)}}
+.case-top{position:sticky; top:0; z-index:3; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 18px; background:color-mix(in srgb, var(--bg-2) 92%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.case-top .eyebrow{color:var(--acc-hi)}
+.case-prog{position:absolute; left:0; bottom:-1px; height:2px; width:var(--p,0%); background:var(--acc)}
+.x{border:1.5px solid var(--line); background:transparent; color:var(--fg); border-radius:999px; padding:.55em 1em; font:700 14px/1 var(--f-body); cursor:pointer}
+.case-body{padding:34px clamp(18px, 5vw, 64px) 70px; display:flex; flex-direction:column; gap:40px}
+.cs-title h2{font-size:clamp(48px, 8vw, 120px)}
+.cs-title .one{font-size:clamp(18px, 2vw, 22px); color:var(--fg-2); max-width:46ch; margin-top:16px}
+.cs-hero{border-radius:18px; overflow:hidden; background:#0a0b0e}
+.cs-hero img{width:100%; max-height:76vh; object-fit:contain}
+.specs{display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:10px; margin:0}
+.specs div{background:var(--card); border-radius:14px; padding:16px}
+.specs dt{font:500 11px/1.2 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2)}
+.specs dd{margin:8px 0 0; font-weight:700; font-variant-numeric:tabular-nums}
+.cs-intro{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:28px 48px; align-items:start}
+@media (max-width:820px){ .cs-intro{grid-template-columns:1fr} }
+.cs-overview{font-size:clamp(18px, 1.7vw, 21px); line-height:1.65}
+.cs-problem{margin:0; padding:26px 26px 26px 30px; border-radius:18px; background:color-mix(in srgb, var(--acc) 14%, var(--card)); border:1px solid color-mix(in srgb, var(--acc) 40%, transparent)}
+.cs-problem small{display:block; font:500 11px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--acc-hi); margin-bottom:12px}
+.cs-problem p{font:600 clamp(18px, 1.7vw, 21px)/1.45 var(--f-body)}
+.cs-toc{display:flex; flex-wrap:wrap; gap:8px; border-top:1px solid var(--line); padding-top:22px}
+.cs-toc span{font:500 11px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--fg-2); width:100%; margin-bottom:4px}
+.cs-toc a{font:600 13px/1 var(--f-body); padding:.6em .9em; border-radius:999px; border:1px solid var(--line); text-decoration:none; color:var(--fg-2); transition:border-color .2s, color .2s}
+.cs-toc a:hover{color:var(--fg); border-color:var(--acc)}
+.cs-sec{display:grid; grid-template-columns:minmax(0,.36fr) minmax(0,1fr); gap:20px 48px; padding-top:40px; border-top:1px solid var(--line); scroll-margin-top:70px}
+.cs-label{position:sticky; top:84px; align-self:start}
+.cs-num{font:400 clamp(44px, 5vw, 64px)/.9 var(--f-display); color:transparent; -webkit-text-stroke:1.2px var(--acc)}
+.cs-label h3{font-size:clamp(26px, 2.6vw, 36px); margin-top:10px}
+.cs-content{display:flex; flex-direction:column; gap:18px; min-width:0}
+.cs-content > p{font-size:17px; line-height:1.7; color:color-mix(in srgb, var(--fg) 86%, transparent); max-width:64ch}
+.cs-points{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+.cs-points li{position:relative; padding:12px 14px 12px 38px; border-radius:12px; background:var(--card); line-height:1.5; font-size:16px}
+.cs-points li::before{content:""; position:absolute; left:15px; top:19px; width:9px; height:9px; border-radius:50%; background:var(--acc)}
+.cs-imgs{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; margin-top:4px}
+.cs-imgs.one{grid-template-columns:1fr}
+.cs-imgs.odd a:first-child{grid-column:1 / -1}
+.cs-imgs a{display:block; border-radius:12px; overflow:hidden; background:#0a0b0e; border:1px solid var(--line)}
+.cs-imgs img{width:100%; transition:transform .5s}
+.cs-imgs a:hover img{transform:scale(1.02)}
+.cs-cap{font-size:14px; color:var(--fg-2)}
+@media (max-width:820px){ .cs-sec{grid-template-columns:1fr} .cs-label{position:static} .cs-imgs{grid-template-columns:1fr} }
+
+/* The two key panels every client should see first */
+.cs-start{display:flex; align-items:center; gap:12px; font:500 12px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--acc-hi)}
+.cs-start::after{content:""; flex:1; height:1px; background:linear-gradient(90deg, var(--acc), transparent)}
+.cs-key{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px; margin-top:-24px}
+@media (max-width:980px){ .cs-key{grid-template-columns:1fr} }
+.kp{position:relative; border-radius:24px; padding:clamp(22px, 3vw, 34px); scroll-margin-top:70px;
+  background:linear-gradient(165deg, color-mix(in srgb, var(--acc) 24%, var(--card)), var(--card) 60%);
+  border:1.5px solid color-mix(in srgb, var(--acc) 60%, transparent);
+  box-shadow:0 0 0 6px color-mix(in srgb, var(--acc) 9%, transparent), 0 24px 50px rgba(0,0,0,.35)}
+.kp-head{display:flex; align-items:center; gap:14px; margin-bottom:24px}
+.kp-no{flex:0 0 auto; width:46px; height:46px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:#fff; font:400 24px/1 var(--f-display)}
+.kp-head h3{font-size:clamp(26px, 2.6vw, 36px); line-height:1}
+.kp-head small{display:block; font:500 11px/1.3 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2); margin-top:6px}
+.kp-row{padding:16px 0; border-top:1px solid color-mix(in srgb, var(--acc) 25%, var(--line))}
+.kp-row:first-of-type{border-top:0; padding-top:0}
+.kp-label{display:flex; align-items:center; gap:8px; font:500 11px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--acc-hi); margin-bottom:9px}
+.kp-label i{font-style:normal; font-size:14px}
+.kp-row p{line-height:1.6}
+.kp-row.big p{font:600 clamp(18px, 1.6vw, 21px)/1.45 var(--f-body)}
+.steps{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.steps li{position:relative; display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px; padding:0 0 16px 22px}
+.steps li::before{content:""; position:absolute; left:4px; top:6px; width:11px; height:11px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent)}
+.steps li::after{content:""; position:absolute; left:9px; top:20px; bottom:0; width:1.5px; background:color-mix(in srgb, var(--acc) 45%, transparent)}
+.steps li:last-child::after{display:none}
+.steps b{font:400 19px/1.1 var(--f-display); text-transform:uppercase; letter-spacing:.02em}
+.steps span{font-size:15px; line-height:1.5; color:color-mix(in srgb, var(--fg) 82%, transparent)}
+@media (max-width:520px){ .steps li{grid-template-columns:1fr; gap:4px} }
+.kp-out{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:16px; align-items:center; margin-top:4px}
+.kp-out img{width:100%; border-radius:14px; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--line)}
+.kp-out p{font-weight:600; line-height:1.5}
+@media (max-width:520px){ .kp-out{grid-template-columns:1fr} }
+.cs-video{border-radius:24px; padding:clamp(18px, 2.6vw, 28px); background:var(--card); border:1px solid color-mix(in srgb, var(--acc) 40%, var(--line)); scroll-margin-top:70px}
+.cs-video-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px}
+.cs-video-head h3{font-size:clamp(28px, 3vw, 40px)}
+.cs-video-head p:not(.kp-label){color:var(--fg-2); margin-top:8px; max-width:56ch}
+.cs-frame{position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#000}
+.cs-frame iframe, .cs-frame video{position:absolute; inset:0; width:100%; height:100%; border:0}
+/* clickable phone prototype */
+.cs-proto{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:30px 56px; align-items:center; padding:clamp(22px, 3vw, 40px); border-radius:26px; scroll-margin-top:70px;
+  background:radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--acc) 30%, transparent), transparent 60%), var(--card); border:1.5px solid color-mix(in srgb, var(--acc) 55%, transparent)}
+@media (max-width:760px){ .cs-proto{grid-template-columns:1fr; justify-items:center} }
+.pt-text{display:flex; flex-direction:column; align-items:flex-start; gap:16px}
+.pt-text h3{font-size:clamp(32px, 4vw, 54px)}
+.pt-text > p:not(.kp-label){color:var(--fg-2); max-width:42ch}
+.pt-tabs{display:flex; flex-wrap:wrap; gap:6px}
+.pt-tabs button{font:600 14px/1 var(--f-body); padding:.65em 1em; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--fg-2); cursor:pointer}
+.pt-tabs button[aria-selected="true"]{background:var(--acc); border-color:var(--acc); color:#fff}
+.pt-hint{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--fg-2); cursor:pointer}
+.pt-hint input{accent-color:var(--acc); width:16px; height:16px}
+.pt-phone{position:relative; width:min(300px, 78vw); padding:12px; border-radius:44px; background:#0b0b10; box-shadow:0 0 0 2px #2b2b36, 0 40px 80px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.06)}
+.pt-notch{position:absolute; z-index:3; top:20px; left:50%; translate:-50% 0; width:84px; height:22px; border-radius:999px; background:#0b0b10}
+.pt-screen{position:relative; aspect-ratio:442/984; border-radius:32px; overflow:hidden; background:#f4f1ff}
+.pt-view{position:absolute; inset:0; transition:transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s}
+.pt-view img{width:100%; height:100%; object-fit:cover}
+.pt-view.in-left{animation:ptin .35s cubic-bezier(.2,.8,.2,1)}
+.pt-view.out{opacity:0; transform:translateX(-12%)}
+@keyframes ptin{from{transform:translateX(18%); opacity:0}}
+.pt-hot{position:absolute; border:0; background:transparent; border-radius:12px; cursor:pointer; padding:0}
+.pt-hot:focus-visible, .pt-screen.hint .pt-hot{background:color-mix(in srgb, var(--acc) 28%, transparent); box-shadow:0 0 0 2px var(--acc)}
+.pt-screen:not(.hint) .pt-view.in-left .pt-hot{animation:hotflash 1.4s ease .4s 1}
+@keyframes hotflash{30%{background:color-mix(in srgb, var(--acc) 30%, transparent); box-shadow:0 0 0 2px var(--acc)}}
+.cs-detail{display:flex; align-items:center; gap:12px; font:500 12px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--fg-2)}
+.cs-detail::after{content:""; flex:1; height:1px; background:var(--line)}
+.cs-end{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:14px; padding-top:34px; border-top:1px solid var(--line)}
+.case-links{display:flex; flex-wrap:wrap; gap:10px}
+.cs-next{display:flex; flex-direction:column; align-items:flex-end; gap:6px; background:none; border:0; color:var(--fg); cursor:pointer; text-align:right; font:inherit}
+.cs-next small{font:500 11px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--fg-2)}
+.cs-next b{font:400 clamp(28px, 3vw, 40px)/1 var(--f-display); text-transform:uppercase; transition:color .2s}
+.cs-next:hover b{color:var(--acc-hi)}
+</style>
+</head>
+<body>
+<div class="arrive" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="back" href="index.html#worlds">← Back home</a>
+    <nav class="switch" id="switch" aria-label="Worlds"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap head">
+    <div>
+      <p class="eyebrow rise" style="--d:.5s" id="eyebrow"></p>
+      <h1 class="rise" style="--d:.6s" id="title"></h1>
+      <p class="rise" style="--d:.7s" id="line"></p>
+    </div>
+    <div class="count rise" style="--d:.75s" id="count"></div>
+  </section>
+  <section class="wrap" id="content"></section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <h2>Visit another world</h2>
+    <div class="links" id="others"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span id="copyright"></span>
+    <a id="mail" href="#">Hire me</a>
+  </div>
+</footer>
+
+<dialog class="case" id="case" aria-labelledby="case-title">
+  <div class="case-top">
+    <span class="eyebrow" id="case-kind"></span>
+    <button class="x" type="button" id="close">Close</button>
+    <span class="case-prog" id="case-prog"></span>
+  </div>
+  <div class="case-body" id="case-body"></div>
+</dialog>
+
+<!-- All your text, links and projects are in content.js -->
+<script src="content.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const mailto = `mailto:${ME.email}?subject=${encodeURIComponent(ME.emailSubject || "")}`;
+const W = Object.assign({
+  industrial:   { name: "Product Design", line: "" },
+  uiux:         { name: "UI/UX Design", line: "" },
+  electronics:  { name: "Phygital Lab", line: "" },
+  illustration: { name: "Digital Illustration", line: "" }
+}, ME.worlds || {});
+const WORLDS = {
+  product: { key: "industrial",  acc: "#2D6AF0", hi: "#5C8EFF", eyebrow: "World · Physical products", list: PROJECTS.filter(p => p.group !== "uiux" && p.group !== "electronics") },
+  uiux:    { key: "uiux",        acc: "#8B5CF6", hi: "#A98BFF", eyebrow: "World · Screens and services", list: PROJECTS.filter(p => p.group === "uiux") },
+  lab:     { key: "electronics", acc: "#10B981", hi: "#34D399", eyebrow: "World · Electronics and play", list: PROJECTS.filter(p => p.group === "electronics") }
+};
+const LINKS = [
+  ["product", "#2D6AF0", W.industrial.name, "world.html#product"],
+  ["uiux", "#8B5CF6", W.uiux.name, "world.html#uiux"],
+  ["lab", "#10B981", W.electronics.name, "world.html#lab"],
+  ["ill", "#FF8FB1", W.illustration.name, "illustration.html"]
+].filter(([k]) => k === "ill" || WORLDS[k].list.length);
+const splitName = n => { const w = String(n).split(" "); return w.length > 1 ? `${esc(w.slice(0, -1).join(" "))} <span>${esc(w.at(-1))}</span>` : esc(n); };
+$("#copyright").textContent = `© ${new Date().getFullYear()} ${ME.name}`;
+$("#mail").href = mailto;
+
+function render() {
+  const id = WORLDS[location.hash.slice(1)] ? location.hash.slice(1) : "product";
+  const w = WORLDS[id], info = W[w.key];
+  document.documentElement.style.setProperty("--acc", w.acc);
+  document.documentElement.style.setProperty("--acc-hi", w.hi);
+  document.title = `${info.name} · ${ME.name}`;
+  $("#switch").innerHTML = LINKS.map(([k, c, name, href]) =>
+    `<a href="${href}" style="--c:${c}" ${k === id ? 'aria-current="page"' : ""}><i></i><span>${esc(k === "ill" ? "Illustration" : name)}</span></a>`).join("");
+  $("#eyebrow").textContent = w.eyebrow;
+  $("#title").innerHTML = splitName(info.name);
+  $("#line").textContent = info.line;
+  $("#count").innerHTML = `${String(w.list.length).padStart(2, "0")}<small>${w.list.length === 1 ? "project" : "projects"}</small>`;
+
+  if (id === "product") {
+    $("#content").innerHTML = `<div class="grid">${w.list.map((p, i) => `
+      <button class="card rise" type="button" data-id="${esc(p.id)}" style="--d:${0.85 + i * 0.1}s">
+        <span class="pic">${p.status ? `<span class="status">${esc(p.status)}</span>` : ""}<img src="${esc(p.img)}" alt="" loading="lazy"></span>
+        <span class="row"><h3>${esc(p.title)}</h3><span class="kind">${esc(p.kind)}</span></span>
+        <p>${esc(p.one)}</p>
+      </button>`).join("")}</div>`;
+  } else if (id === "lab") {
+    $("#content").innerHTML = `<div class="screens">${w.list.map((p, i) => `
+      <article class="srow rise" style="--d:${0.85 + i * 0.12}s">
+        <div class="stext">
+          <span class="tags"><span class="tag">${esc(p.kind)}</span>${p.status ? `<span class="tag ghost">${esc(p.status)}</span>` : ""}</span>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.one)}</p>
+          <ul>${(p.specs || []).slice(0, 4).map(([k, v]) => `<li>${esc(k)}: ${esc(v)}</li>`).join("")}</ul>
+          <button class="btn acc" type="button" data-id="${esc(p.id)}">View project →</button>
+        </div>
+        <button class="board" type="button" data-id="${esc(p.id)}" aria-label="Open ${esc(p.title)}">
+          <i class="pin tl"></i><i class="pin tr"></i><i class="pin bl"></i><i class="pin br"></i>
+          <img src="${esc(p.img)}" alt="" loading="lazy">
+          <span class="led" aria-hidden="true"></span>
+        </button>
+      </article>`).join("")}</div>`;
+  } else {
+    $("#content").innerHTML = `<div class="screens">${w.list.map((p, i) => `
+      <article class="srow rise" style="--d:${0.85 + i * 0.12}s">
+        <div class="stext">
+          <span class="tags"><span class="tag">${esc(p.kind)}</span>${p.status ? `<span class="tag ghost">${esc(p.status)}</span>` : ""}</span>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.one)}</p>
+          <ul>${(p.specs || []).slice(0, 3).map(([k, v]) => `<li>${esc(k)}: ${esc(v)}</li>`).join("")}</ul>
+          <button class="btn acc" type="button" data-id="${esc(p.id)}">View case study →</button>
+        </div>
+        <button class="window" type="button" data-id="${esc(p.id)}" aria-label="Open ${esc(p.title)}">
+          <span class="wbar"><i></i><i></i><i></i><span>${esc(p.title.toLowerCase().replace(/\s+/g, ""))}.case-study</span></span>
+          <img src="${esc(p.img)}" alt="" loading="lazy">
+        </button>
+      </article>`).join("")}</div>`;
+  }
+  document.querySelectorAll("[data-id]").forEach(b => b.addEventListener("click", () => openCase(b.dataset.id)));
+
+  $("#others").innerHTML = LINKS.filter(([k]) => k !== id).map(([k, c, name, href]) => `<a href="${href}" style="--c:${c}"><i></i>${esc(name)}</a>`).join("");
+  scrollTo(0, 0);
+}
+addEventListener("hashchange", render);
+render();
+
+/* project details: a full case study */
+const dlg = $("#case");
+const pad2 = n => String(n).padStart(2, "0");
+function openCase(pid) {
+  const p = PROJECTS.find(x => x.id === pid); if (!p) return;
+  const wid = WORLDS[location.hash.slice(1)] ? location.hash.slice(1) : "product";
+  const list = WORLDS[wid].list;
+  const next = list[(list.findIndex(x => x.id === pid) + 1) % list.length];
+  const story = p.story || [];
+  const imgs = arr => {
+    const n = arr.length; if (!n) return "";
+    return '<div class="cs-imgs ' + (n === 1 ? "one" : n % 2 ? "odd" : "") + '">' +
+      arr.map(src => '<a href="' + esc(src) + '" target="_blank" rel="noopener" data-cursor="Zoom"><img src="' + esc(src) + '" alt="" loading="lazy"></a>').join("") + '</div>';
+  };
+  $("#case-kind").textContent = p.kind + (p.status ? " · " + p.status : "");
+  let h = "";
+  h += '<div class="cs-title"><h2 id="case-title">' + esc(p.title) + '</h2><p class="one">' + esc(p.one) + '</p></div>';
+  // ---- the two key panels: how I think, and what I delivered
+  const proc = p.process || [];
+  if (p.problem || p.forWhom || p.why || proc.length || p.outcome) {
+    h += '<p class="cs-start">Start here · the short version</p><div class="cs-key">';
+    h += '<section class="kp" id="cs-k1"><div class="kp-head"><span class="kp-no">1</span><div><h3>Problem &amp; Design Thinking</h3><small>How I think</small></div></div>' +
+      (p.problem ? '<div class="kp-row big"><p class="kp-label"><i>◎</i>The problem</p><p>' + esc(p.problem) + '</p></div>' : "") +
+      (p.forWhom ? '<div class="kp-row"><p class="kp-label"><i>☺</i>Who I am designing for</p><p>' + esc(p.forWhom) + '</p></div>' : "") +
+      (p.why ? '<div class="kp-row"><p class="kp-label"><i>✦</i>Why this solution</p><p>' + esc(p.why) + '</p></div>' : "") +
+      '</section>';
+    h += '<section class="kp" id="cs-k2"><div class="kp-head"><span class="kp-no">2</span><div><h3>Design Process &amp; Final Outcome</h3><small>What I delivered</small></div></div>' +
+      (proc.length ? '<div class="kp-row"><p class="kp-label"><i>→</i>Process</p><ol class="steps">' + proc.map(([a, b]) => '<li><b>' + esc(a) + '</b><span>' + esc(b) + '</span></li>').join("") + '</ol></div>' : "") +
+      (p.outcome ? '<div class="kp-row"><p class="kp-label"><i>★</i>Final outcome</p><div class="kp-out">' + (p.outcomeImg ? '<img src="' + esc(p.outcomeImg) + '" alt="' + esc(p.title) + ' final outcome">' : "") + '<p>' + esc(p.outcome) + '</p></div></div>' : "") +
+      '</section>';
+    h += '</div>';
+  }
+  // ---- optional video, right after the two panels
+  if (p.video && p.video.src) {
+    const v = p.video;
+    const isFile = /\.(mp4|webm|mov)(\?|$)/i.test(v.src);
+    h += '<section class="cs-video" id="cs-v"><div class="cs-video-head"><div><p class="kp-label"><i>▶</i>Video</p><h3>' + esc(v.title || "See it working") + '</h3>' +
+      (v.note ? '<p>' + esc(v.note) + '</p>' : "") + '</div>' +
+      (v.link ? '<a class="btn" href="' + esc(v.link) + '" target="_blank" rel="noopener">Open full screen ↗</a>' : "") + '</div>' +
+      '<div class="cs-frame">' + (isFile
+        ? '<video src="' + esc(v.src) + '" controls playsinline preload="metadata"></video>'
+        : '<iframe src="' + esc(v.src) + '" title="' + esc(v.title || p.title + " video") + '" allow="autoplay; fullscreen" allowfullscreen></iframe>') +
+      '</div></section>';
+  }
+  h += '<dl class="specs">' + (p.specs || []).map(([k, v]) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>').join("") +
+       (p.team ? '<div><dt>Team</dt><dd>' + esc(p.team) + '</dd></div>' : "") + '</dl>';
+  h += '<div class="cs-hero"><img src="' + esc(p.img) + '" alt="' + esc(p.title) + '"></div>';
+  if (p.overview) h += '<div class="cs-intro"><p class="cs-overview">' + esc(p.overview) + '</p></div>';
+  if (story.length) h += '<p class="cs-detail">The full process, step by step</p>';
+  if (story.length > 2) h += '<nav class="cs-toc" aria-label="In this case study"><span>Jump to</span>' +
+       '<a href="#cs-k1" data-jump="k1">1 · Problem &amp; Design Thinking</a><a href="#cs-k2" data-jump="k2">2 · Process &amp; Outcome</a>' +
+       story.map((s, i) => '<a href="#cs-' + i + '" data-jump="' + i + '">' + esc(s.h) + '</a>').join("") + '</nav>';
+  story.forEach((s, i) => {
+    h += '<section class="cs-sec" id="cs-' + i + '"><div class="cs-label"><div class="cs-num">' + pad2(i + 1) + '</div><h3>' + esc(s.h) + '</h3></div><div class="cs-content">' +
+      (s.text ? '<p>' + esc(s.text) + '</p>' : "") +
+      ((s.points || []).length ? '<ul class="cs-points">' + s.points.map(t => '<li>' + esc(t) + '</li>').join("") + '</ul>' : "") +
+      imgs(s.imgs || []) + (s.cap ? '<p class="cs-cap">' + esc(s.cap) + '</p>' : "") + '</div></section>';
+  });
+  // ---- optional clickable prototype at the end
+  const pr = p.prototype;
+  if (pr && (pr.screens || []).length) {
+    h += '<section class="cs-proto" id="cs-proto"><div class="pt-text"><p class="kp-label"><i>▶</i>Prototype</p><h3>' + esc(pr.title || "Try the prototype") + '</h3>' +
+      (pr.note ? '<p>' + esc(pr.note) + '</p>' : "") +
+      '<div class="pt-tabs" role="tablist">' + pr.screens.map((sc, i) => '<button type="button" role="tab" data-screen="' + esc(sc.id) + '"' + (i === 0 ? ' aria-selected="true"' : "") + '>' + esc(sc.name) + '</button>').join("") + '</div>' +
+      '<label class="pt-hint"><input type="checkbox" id="pt-hint"> Show tap areas</label>' +
+      (pr.link ? '<a class="btn acc" href="' + esc(pr.link[1]) + '" target="_blank" rel="noopener">' + esc(pr.link[0]) + ' ↗</a>' : "") +
+      '</div><div class="pt-phone"><div class="pt-notch"></div><div class="pt-screen" id="pt-screen"></div></div></section>';
+  }
+  if (!story.length && (p.did || []).length) h += '<ul class="cs-points">' + p.did.map(d => '<li>' + esc(d) + '</li>').join("") + '</ul>';
+  h += '<div class="cs-end"><div class="case-links">' +
+       (p.links || []).map(([t, u]) => '<a class="btn acc" href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(t) + ' ↗</a>').join("") +
+       '<a class="btn" href="' + mailto + '">Ask me about this project</a></div>' +
+       (next && next.id !== p.id ? '<button class="cs-next" type="button" data-next="' + esc(next.id) + '"><small>Next project</small><b>' + esc(next.title) + ' →</b></button>' : "") + '</div>';
+  $("#case-body").innerHTML = h;
+  $("#case-body").querySelectorAll("[data-jump]").forEach(a => a.addEventListener("click", e => {
+    e.preventDefault(); $("#cs-" + a.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" });
+  }));
+  // prototype: switch screens with a slide, tap areas jump between them
+  if (pr && (pr.screens || []).length) {
+    const holder = $("#pt-screen");
+    const show = (sid, dir) => {
+      const sc = pr.screens.find(x => x.id === sid) || pr.screens[0];
+      const el = document.createElement("div"); el.className = "pt-view" + (dir ? " in-" + dir : "");
+      el.innerHTML = '<img src="' + esc(sc.img) + '" alt="' + esc(sc.name) + ' screen">' +
+        (sc.hot || []).map(hs => '<button type="button" class="pt-hot" style="left:' + hs.x + '%;top:' + hs.y + '%;width:' + hs.w + '%;height:' + hs.h + '%" data-to="' + esc(hs.to) + '" data-cursor="' + esc(hs.label || "Tap") + '" aria-label="' + esc(hs.label || "Open " + hs.to) + '"></button>').join("");
+      const old = holder.querySelector(".pt-view"); if (old) { old.classList.add("out"); setTimeout(() => old.remove(), 350); }
+      holder.appendChild(el);
+      el.querySelectorAll(".pt-hot").forEach(b => b.addEventListener("click", () => show(b.dataset.to, "left")));
+      $("#case-body").querySelectorAll(".pt-tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.screen === sc.id));
+    };
+    $("#case-body").querySelectorAll(".pt-tabs button").forEach(b => b.addEventListener("click", () => show(b.dataset.screen, "left")));
+    $("#pt-hint").addEventListener("change", e => holder.classList.toggle("hint", e.target.checked));
+    show(pr.screens[0].id);
+  }
+  const nb = $("#case-body").querySelector("[data-next]");
+  if (nb) nb.addEventListener("click", () => openCase(nb.dataset.next));
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+// reading progress bar along the top of the case study
+dlg.addEventListener("scroll", () => {
+  const max = dlg.scrollHeight - dlg.clientHeight;
+  $("#case-prog").style.setProperty("--p", (max > 0 ? dlg.scrollTop / max * 100 : 0) + "%");
+});
+$("#close").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+</script>
+<script src="cursor.js"></script>
+</body>
+</html>

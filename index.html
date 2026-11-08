@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aheri Halder · Systems Product Designer</title>
+<meta name="description" content="Portfolio of Aheri Halder, a systems product designer working across product design, UI/UX and illustration.">
+<script>
+  // switch animations on before the page paints (skipped if the visitor prefers less motion)
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("anim");
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: huge condensed words beside a photo card; the card travels down and flips into "What I do";
+   then About me, then three "worlds" (doors). Each door opens that world on its own page.
+   One dark look on purpose. World colours: --c-product, --c-uiux, --c-ill. */
+:root{
+  --bg:#0D0E12; --bg-2:#15171D; --card:#1B1E26; --line:#2A2E39;
+  --fg:#F3F4F7; --fg-2:#A4AAB8;
+  --blue:#2D6AF0; --blue-hi:#5C8EFF;
+  --c-product:#2D6AF0; --c-uiux:#8B5CF6; --c-ill:#FF8FB1;
+  --f-display:"Anton", "Impact", "Arial Narrow Bold", sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  --gl:max(18px, env(safe-area-inset-left, 0px)); --gr:max(18px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{margin:0; background:var(--bg); color:var(--fg); font:400 17px/1.6 var(--f-body); -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3{margin:0; font-family:var(--f-display); font-weight:400; text-transform:uppercase; line-height:.9; letter-spacing:.005em}
+p{margin:0}
+:focus-visible{outline:2px solid var(--blue-hi); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1240px; margin:0 auto; padding-left:var(--gl); padding-right:var(--gr)}
+.eyebrow{font:500 12px/1.3 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2)}
+.btn{display:inline-flex; align-items:center; gap:.5em; padding:.85em 1.4em; border-radius:999px; font:700 15px/1 var(--f-body); text-decoration:none; border:1.5px solid var(--fg); color:var(--fg); background:transparent; cursor:pointer; transition:transform .35s cubic-bezier(.2,.8,.2,1), background .15s}
+.btn.blue{background:var(--blue); border-color:var(--blue); color:#fff}
+.btn.blue:hover{background:var(--blue-hi); border-color:var(--blue-hi)}
+
+/* Pill */
+.pill{position:fixed; z-index:40; top:calc(14px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:10px; padding:6px; border-radius:999px; background:rgba(24,26,33,.82); backdrop-filter:blur(12px); border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.35); white-space:nowrap; width:max-content; max-width:calc(100% - 24px)}
+.pill img{width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pill .status{display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; padding-right:4px}
+.pill .dot{width:8px; height:8px; border-radius:50%; background:#3BD67A; animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(59,214,122,.6)} 70%{box-shadow:0 0 0 7px rgba(59,214,122,0)} 100%{box-shadow:0 0 0 0 rgba(59,214,122,0)}}
+.pill nav{display:flex; gap:2px}
+.pill nav a{padding:.5em .8em; border-radius:999px; text-decoration:none; font-size:14px; font-weight:600; color:var(--fg-2)}
+.pill nav a:hover{color:var(--fg); background:rgba(255,255,255,.06)}
+.pill .hire{padding:.6em 1em; font-size:14px}
+@media (max-width:640px){ .pill nav{display:none} }
+
+/* Hero */
+.hero{padding-top:110px; padding-bottom:40px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px 48px; align-items:center}
+.hero .name{font:400 clamp(18px, 2vw, 26px)/1 var(--f-display); letter-spacing:.04em; text-transform:uppercase; color:var(--fg-2)}
+.big{font-family:var(--f-display); text-transform:uppercase; line-height:.86; font-size:clamp(58px, 11vw, 176px); margin-top:10px}
+.hero-sub{margin-top:22px; font:500 clamp(18px, 1.8vw, 24px)/1.35 var(--f-body); color:var(--fg); max-width:26ch}
+.big .ln{display:block; overflow:hidden; padding-top:.06em; margin-top:-.06em}
+.big .ln i{display:inline-block; font-style:normal}
+.big .ln.blue{color:var(--blue)}
+.big .ln:nth-child(2){padding-left:.5em}
+.slot-a{width:clamp(200px, 24vw, 320px); aspect-ratio:3/4}
+.photo{position:relative; width:100%; height:100%; border-radius:22px; transform:rotate(3deg)}
+.photo > img{width:100%; height:100%; object-fit:cover; border-radius:22px; box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.hi{position:absolute; z-index:2; left:-28px; bottom:22%; width:74px; height:74px; border-radius:50%; background:var(--blue); color:#fff; display:grid; place-items:center; font:700 22px/1 var(--f-body); animation:bob 3.5s ease-in-out infinite}
+@keyframes bob{50%{translate:0 -8px}}
+.hero-foot{display:flex; justify-content:space-between; align-items:flex-end; gap:24px 40px; flex-wrap:wrap; margin-top:28px}
+.hero-foot p{max-width:30em; color:var(--fg-2); font-size:18px}
+.hero-foot p b{color:var(--fg); font-weight:600}
+.hero-foot .ctas{display:flex; gap:10px; flex-wrap:wrap}
+@media (max-width:760px){ .hero-grid{grid-template-columns:1fr} .slot-a{justify-self:center; width:64vw} .big .ln:nth-child(2){padding-left:0} .hi{left:-14px; width:60px; height:60px; font-size:18px} }
+@media (max-width:640px){ .hero{padding-top:92px} }
+
+/* Travelling card */
+.traveler{display:none; position:absolute; left:0; top:0; z-index:6; pointer-events:none; perspective:1400px; will-change:transform}
+html.anim .traveler{display:block}
+html.anim .slot-a .photo{visibility:hidden}
+html.anim .slot-b > img{visibility:hidden}
+html.anim .slot-b{background:transparent}
+.tv-in{position:absolute; inset:0}
+.flip{position:absolute; inset:0; transform-style:preserve-3d}
+.face{position:absolute; inset:0; border-radius:22px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; box-shadow:0 30px 60px rgba(0,0,0,.5); background:var(--card)}
+.face.back{transform:rotateY(180deg)}
+.face img{width:100%; height:100%; object-fit:cover; transition:opacity .3s}
+
+/* Strip */
+.strip{border-block:1px solid var(--line); background:var(--bg-2); overflow:hidden; padding-block:16px; margin-top:56px}
+.strip-track{display:flex; gap:40px; width:max-content; animation:slide 40s linear infinite}
+.strip-track span{font:400 clamp(22px, 3vw, 34px)/1 var(--f-display); text-transform:uppercase; white-space:nowrap; display:flex; align-items:center; gap:40px}
+.strip-track span::after{content:""; width:12px; height:12px; background:var(--blue); transform:rotate(45deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section.block{padding-block:100px}
+.sec-title{font-size:clamp(52px, 8vw, 110px)}
+.sec-intro{color:var(--fg-2); max-width:46ch; margin-top:18px; font-size:18px}
+
+/* What I do */
+.do{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:60px; align-items:center; margin-top:48px}
+.acc details{border-bottom:1px solid var(--line)}
+.acc details:first-child{border-top:1px solid var(--line)}
+.acc summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:18px 0; font:400 clamp(22px, 2.5vw, 32px)/1 var(--f-display); letter-spacing:.01em; text-transform:uppercase; transition:color .2s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{color:var(--blue-hi)}
+.acc summary i{flex:0 0 auto; width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line); display:grid; place-items:center; font:400 20px/1 var(--f-body); font-style:normal; transition:transform .25s, background .2s, border-color .2s}
+.acc details[open] summary i{transform:rotate(45deg); background:var(--blue); border-color:var(--blue)}
+.acc details p{padding:0 56px 20px 0; color:var(--fg-2); max-width:52ch; font-size:16px; animation:drop .45s cubic-bezier(.16,.84,.2,1)}
+@keyframes drop{from{opacity:0; transform:translateY(-10px)}}
+.slot-b{position:relative; justify-self:center; width:min(100%, 400px); aspect-ratio:3/4; border-radius:22px; overflow:hidden; background:var(--card); transform:rotate(-3deg)}
+.slot-b > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+@media (max-width:860px){ .do{grid-template-columns:1fr; gap:36px} .slot-b{width:min(78vw, 360px)} }
+
+/* About */
+.about{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:60px; align-items:center}
+@media (max-width:860px){ .about{grid-template-columns:1fr; gap:36px} }
+.about .lead{font:600 clamp(21px, 2.4vw, 28px)/1.35 var(--f-body); margin-top:24px; max-width:30ch}
+.about .text{color:var(--fg-2); margin-top:18px; max-width:58ch}
+.contact-row{display:flex; flex-wrap:wrap; gap:18px 40px; margin-top:30px}
+.contact-row .k{font:500 12px/1 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2); margin-bottom:8px}
+.contact-row .v{font-weight:600; font-size:17px; text-decoration:none; overflow-wrap:anywhere}
+.contact-row a.v:hover{color:var(--blue-hi)}
+.socials{display:flex; gap:10px; margin-top:26px; flex-wrap:wrap}
+.social{width:46px; height:46px; border-radius:50%; display:grid; place-items:center; border:1.5px solid var(--line); text-decoration:none; transition:background .2s, border-color .2s, transform .35s cubic-bezier(.2,.8,.2,1)}
+.social:hover{background:var(--blue); border-color:var(--blue)}
+.social svg{width:19px; height:19px}
+.about-photo{position:relative; margin:0; padding:0; border:0; cursor:pointer; border-radius:22px; overflow:hidden; aspect-ratio:4/5; background:var(--card); max-width:440px; width:100%; justify-self:end; transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.about-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.05); transition:filter .5s}
+.about-photo:hover{transform:rotate(-2deg) translateY(-6px)}
+.about-photo:hover img{filter:none}
+.id-hint{position:absolute; left:50%; bottom:16px; translate:-50% 0; display:inline-flex; align-items:center; gap:8px; white-space:nowrap; padding:.7em 1.1em; border-radius:999px; background:rgba(13,14,18,.78); backdrop-filter:blur(8px); color:#fff; font:700 14px/1 var(--f-body); border:1px solid rgba(255,255,255,.15); animation:hintbob 2.6s ease-in-out infinite}
+.id-hint i{font-style:normal}
+@keyframes hintbob{50%{translate:-50% -5px}}
+
+/* contact list: email + social accounts with their IDs */
+.contact-list{list-style:none; margin:30px 0 0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px}
+@media (max-width:560px){ .contact-list{grid-template-columns:1fr} }
+.contact{display:flex; align-items:center; gap:14px; padding:12px 14px; border-radius:16px; border:1px solid var(--line); background:var(--bg-2); text-decoration:none; transition:border-color .2s, transform .3s, background .2s}
+.contact:hover{border-color:var(--blue); background:color-mix(in srgb, var(--blue) 10%, var(--bg-2)); transform:translateY(-2px)}
+.contact .ci{flex:0 0 auto; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:var(--card); color:var(--fg)}
+.contact .ci svg{width:19px; height:19px}
+.contact .ct{display:flex; flex-direction:column; gap:3px; min-width:0}
+.contact .ct small{font:500 11px/1 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2)}
+.contact .ct b{font-weight:600; font-size:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.contact .ca{margin-left:auto; color:var(--fg-2)}
+
+/* Instagram QR card */
+.qr-card{display:flex; align-items:center; gap:18px; margin-top:12px; padding:14px; border-radius:20px; text-decoration:none; color:#fff;
+  background:linear-gradient(135deg, #F9A825 0%, #F7593A 45%, #E1306C 100%); box-shadow:0 18px 40px rgba(225,48,108,.25); transition:transform .3s}
+.qr-card:hover{transform:translateY(-3px) rotate(-.5deg)}
+.qr-card img{flex:0 0 auto; width:132px; height:132px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.qr-t{display:flex; flex-direction:column; gap:5px; min-width:0}
+.qr-t small{font:500 11px/1.2 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; opacity:.9}
+.qr-t b{font:400 clamp(22px, 2.4vw, 30px)/1 var(--f-display); letter-spacing:.01em; overflow-wrap:anywhere}
+.qr-t span{font-size:14px; opacity:.92; line-height:1.4}
+@media (max-width:420px){ .qr-card{flex-direction:column; align-items:flex-start} }
+
+/* resume ID card on a lanyard */
+dialog.idc{padding:0 0 30px; margin:0; inset:0; border:0; background:transparent; overflow:auto; max-width:none; max-height:none; width:100%; height:100%; display:none}
+dialog.idc[open]{display:grid; place-items:start center}
+dialog.idc::backdrop{background:rgba(5,6,10,.78); backdrop-filter:blur(6px)}
+.lan{position:relative; display:flex; flex-direction:column; align-items:center; padding-top:0; animation:drop-in 1s cubic-bezier(.3,1.3,.5,1) both; transform-origin:50% 0}
+@keyframes drop-in{0%{transform:translateY(-110vh) rotate(-8deg)} 60%{transform:translateY(0) rotate(5deg)} 80%{transform:rotate(-2.5deg)} 100%{transform:rotate(0)}}
+.lan.swing{animation:swing 1.1s ease-in-out}
+@keyframes swing{25%{transform:rotate(4deg)} 60%{transform:rotate(-2.5deg)} 85%{transform:rotate(1deg)}}
+.strap{width:30px; height:clamp(40px, 12vh, 120px); background:repeating-linear-gradient(90deg, #2D6AF0 0 6px, #244fb8 6px 8px); box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.strap::after{content:"AHERI HALDER · PRODUCT DESIGNER · AHERI HALDER"; display:block; writing-mode:vertical-rl; font:700 9px/30px var(--f-mono); letter-spacing:.2em; color:rgba(255,255,255,.75); overflow:hidden; height:100%; text-align:center}
+.clip{width:46px; height:22px; margin-top:-2px; border-radius:6px 6px 10px 10px; background:linear-gradient(#d9dce3, #8b909b); box-shadow:0 3px 6px rgba(0,0,0,.4)}
+.clip + .hole{display:none}
+.idcard{position:relative; width:min(360px, 88vw); aspect-ratio:54/86; margin-top:-6px; perspective:1600px; cursor:pointer}
+.idinner{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .9s cubic-bezier(.3,1.2,.4,1)}
+.idcard.flipped .idinner{transform:rotateY(180deg)}
+.idf{position:absolute; inset:0; border-radius:22px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:#F7F8FB; color:#0D0E12; box-shadow:0 30px 70px rgba(0,0,0,.55); display:flex; flex-direction:column}
+.idf::before{content:""; position:absolute; top:12px; left:50%; translate:-50% 0; width:54px; height:9px; border-radius:999px; background:#0D0E12; opacity:.85; z-index:3}
+.idf.back{transform:rotateY(180deg)}
+.id-top{position:relative; padding:34px 20px 0; height:34%; background:linear-gradient(150deg, #2D6AF0, #123A9C); color:#fff; overflow:hidden}
+.id-top::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(115deg, rgba(255,255,255,.07) 0 2px, transparent 2px 14px)}
+.id-org{position:relative; z-index:1; display:flex; justify-content:space-between; font:700 10px/1 var(--f-mono); letter-spacing:.16em; text-transform:uppercase; opacity:.9}
+.id-photo{position:relative; z-index:2; width:44%; aspect-ratio:1; margin:-22% auto 0; border-radius:50%; overflow:hidden; border:5px solid #F7F8FB; box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.id-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 28%}
+.id-body{flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; padding:10px 20px 14px; gap:6px; min-height:0}
+.id-name{font:400 clamp(30px, 8vw, 38px)/.95 var(--f-display); text-transform:uppercase}
+.id-role{font-weight:700; color:#2D6AF0; font-size:14px}
+.id-uni{font:500 11px/1.3 var(--f-mono); letter-spacing:.04em; color:#555b6b}
+.id-pill{display:inline-flex; align-items:center; gap:6px; font:700 11px/1 var(--f-body); padding:.5em .8em; border-radius:999px; background:#E7F8EE; color:#13753F}
+.id-pill::before{content:""; width:7px; height:7px; border-radius:50%; background:#22B35A}
+.id-rows{width:100%; display:grid; gap:5px; margin-top:6px; text-align:left}
+.id-rows a, .id-rows div{display:grid; grid-template-columns:76px minmax(0,1fr); gap:8px; align-items:baseline; font-size:12.5px; text-decoration:none; color:#0D0E12}
+.id-rows small{font:500 9.5px/1 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:#6b7080}
+.id-rows b{font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.id-rows a:hover b{color:#2D6AF0}
+.id-foot{display:flex; justify-content:space-between; align-items:flex-end; gap:12px; padding:10px 18px 14px; border-top:1px dashed #d4d7df}
+.barcode{height:30px; width:120px; background:repeating-linear-gradient(90deg, #0D0E12 0 2px, transparent 2px 4px, #0D0E12 4px 5px, transparent 5px 8px, #0D0E12 8px 11px, transparent 11px 12px)}
+.id-no{font:700 10px/1.3 var(--f-mono); letter-spacing:.12em; text-align:right; color:#6b7080}
+.back .id-top{height:auto; padding:30px 20px 16px}
+.back .id-top h4{position:relative; z-index:1; margin:10px 0 0; font:400 28px/1 var(--f-display); text-transform:uppercase}
+.back-body{flex:1; overflow:auto; padding:12px 18px 12px; display:flex; flex-direction:column; gap:10px; text-align:left}
+.back .id-foot{padding:8px 18px 10px}
+.back .barcode{height:18px; width:90px}
+.back .id-top{padding:28px 20px 12px}
+.bk h5{margin:0 0 6px; font:500 10px/1 var(--f-mono); letter-spacing:.14em; text-transform:uppercase; color:#2D6AF0}
+.chips{display:flex; flex-wrap:wrap; gap:5px}
+.chips span{font-size:11.5px; font-weight:600; padding:.38em .65em; border-radius:999px; background:#EEF1F8}
+.tools-mini{display:flex; flex-wrap:wrap; gap:6px}
+.tools-mini span{width:26px; height:26px; border-radius:8px; display:grid; place-items:center; background:var(--bg-t)}
+.tools-mini svg, .tools-mini img{width:62%; height:62%}
+.ent{display:grid; gap:8px}
+.en{padding-left:10px; border-left:2px solid #2D6AF0}
+.en-t{display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+.en-t b{font-size:12.5px; line-height:1.3}
+.en-t em{font-style:normal; font:600 10.5px/1 var(--f-mono); color:#2D6AF0; white-space:nowrap}
+.en > span{display:block; font-size:11.5px; color:#555b6b; margin-top:2px}
+.bk.two{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.bk ul{margin:0; padding:0; list-style:none; display:grid; gap:4px; font-size:12.5px}
+.bk li{display:flex; justify-content:space-between; gap:10px}
+.bk li em{font-style:normal; color:#6b7080; white-space:nowrap}
+.id-actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; justify-content:center}
+.id-actions .btn{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.25)}
+.id-actions .btn.blue{background:var(--blue); border-color:var(--blue)}
+@media (prefers-reduced-motion: reduce){ .lan{animation:none} }
+@media (max-width:860px){ .about-photo{justify-self:start; order:-1; max-width:360px} }
+
+/* Worlds (doors) */
+.doors{display:flex; gap:14px; margin-top:48px; height:clamp(460px, 66vh, 620px)}
+.door{position:relative; flex:1 1 0; min-width:0; border-radius:26px; overflow:hidden; text-decoration:none; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:26px; isolation:isolate; transition:flex-grow .7s cubic-bezier(.16,.84,.2,1)}
+.door::after{content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,.62) 100%)}
+.doors:hover .door{flex-grow:.8}
+.doors .door:hover, .doors .door:focus-visible{flex-grow:1.7}
+.door.product{background:linear-gradient(160deg, #2D6AF0, #123A9C 70%, #0B1F5C)}
+.door.uiux{background:linear-gradient(160deg, #8B5CF6, #4C2A9E 70%, #24124F)}
+/* Phygital Lab: a circuit board, with copper traces and solder pads */
+.door.elec{background:
+    radial-gradient(circle at 18% 22%, #FCD34D 0 3px, transparent 4px), radial-gradient(circle at 82% 30%, #FCD34D 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 82%, #FCD34D 0 3px, transparent 4px), radial-gradient(circle at 26% 76%, #FCD34D 0 3px, transparent 4px),
+    linear-gradient(90deg, transparent 17.6%, rgba(252,211,77,.35) 17.6% 18.4%, transparent 18.4%),
+    linear-gradient(transparent 29.6%, rgba(252,211,77,.35) 29.6% 30.4%, transparent 30.4%),
+    linear-gradient(90deg, transparent 69.6%, rgba(252,211,77,.3) 69.6% 70.4%, transparent 70.4%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 22px),
+    linear-gradient(160deg, #10B981, #047857 65%, #022C22)}
+.door.ill{background:
+    radial-gradient(1.5px 1.5px at 18% 20%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 76% 16%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 62% 70%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 30% 82%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 52%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 46% 40%, #fff 50%, transparent 51%),
+    radial-gradient(ellipse at 50% 115%, #3A2A8F 0%, #161A3D 55%, #0B0D1C 100%)}
+.door .orb{position:absolute; z-index:-1; left:50%; top:46%; width:70%; aspect-ratio:1; translate:-50% -50%; border-radius:50%; background:conic-gradient(#2D6AF0, #9B6BFF, #FF8FB1, #FFC48A, #2D6AF0); filter:blur(34px); opacity:.7; animation:orbspin 14s linear infinite; transition:scale .8s cubic-bezier(.16,.84,.2,1)}
+.door.ill:hover .orb{scale:1.35}
+@keyframes orbspin{to{rotate:360deg}}
+.door-top{display:flex; justify-content:space-between; gap:10px; font:500 12px/1.3 var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.75)}
+.fan{position:absolute; z-index:-1; left:50%; top:44%; width:min(62%, 240px); aspect-ratio:4/5; translate:-50% -50%}
+.fan img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:14px; box-shadow:0 16px 40px rgba(0,0,0,.45); transition:transform .7s cubic-bezier(.16,.84,.2,1)}
+.fan img.l{transform:rotate(-9deg) translateX(-14%)}
+.fan img.r{transform:rotate(7deg) translateX(14%)}
+.fan img.c{transform:rotate(-1deg) translateY(-4%)}
+.door:hover .fan img.l{transform:rotate(-16deg) translateX(-48%) translateY(4%)}
+.door:hover .fan img.r{transform:rotate(14deg) translateX(48%) translateY(4%)}
+.door:hover .fan img.c{transform:rotate(0deg) translateY(-10%) scale(1.06)}
+.door-bot h3{font-size:clamp(30px, 3.4vw, 52px); text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.door-bot p{margin-top:10px; font-size:15px; color:rgba(255,255,255,.85); max-width:28ch}
+.door .enter{display:inline-flex; gap:.45em; margin-top:16px; font:700 14px/1 var(--f-body); padding:.85em 1.2em; border-radius:999px; background:#fff; color:#111; transition:gap .3s}
+.door:hover .enter{gap:.9em}
+@media (max-width:1100px) and (min-width:861px){
+  .doors{flex-wrap:wrap; height:auto}
+  .door, .doors:hover .door, .doors .door:hover{flex:1 1 calc(50% - 7px); min-height:380px}
+}
+@media (max-width:860px){
+  .doors{flex-direction:column; height:auto}
+  .door{min-height:360px}
+  .doors:hover .door, .doors .door:hover{flex-grow:1}
+}
+
+/* Toolkit dock: app icons only; they swell as the mouse passes, like a desktop dock */
+.dock-wrap{display:flex; justify-content:center; margin-top:56px; padding-top:40px}
+.dock{display:flex; align-items:flex-end; justify-content:center; flex-wrap:wrap; gap:14px; padding:14px 18px; border-radius:28px; background:rgba(255,255,255,.04); border:1px solid var(--line); backdrop-filter:blur(10px); box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.tool{--s:1; position:relative; width:66px; height:66px; border-radius:30%; display:grid; place-items:center; background:var(--bg-t); isolation:isolate;
+  box-shadow:inset 0 -6px 10px rgba(0,0,0,.35), inset 0 4px 8px rgba(255,255,255,.35), 0 10px 20px rgba(0,0,0,.4), 0 2px 0 rgba(0,0,0,.25);
+  transform-origin:50% 100%; transform:scale(var(--s)) translateY(calc((var(--s) - 1) * -16px)); transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+/* glossy, puffed-up highlight like a bubble of glass */
+.tool::before{content:""; position:absolute; z-index:2; left:10%; right:10%; top:5%; height:44%; border-radius:50% 50% 45% 45% / 70% 70% 30% 30%; background:linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.08)); pointer-events:none}
+.tool::after{content:""; position:absolute; z-index:2; right:12%; top:30%; width:9%; height:22%; border-radius:50%; background:rgba(255,255,255,.45); filter:blur(1px); pointer-events:none}
+.tool svg, .tool img{position:relative; z-index:1; width:60%; height:60%; object-fit:contain; filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+.dock .sep{align-self:stretch; width:1px; margin:6px 4px; background:var(--line)}
+@media (max-width:640px){ .dock{gap:12px; padding:14px} .tool{width:54px; height:54px; border-radius:13px} .dock .sep{display:none} .dock-wrap{padding-top:0} }
+
+/* Hire */
+.hire{background:var(--blue); color:#fff; padding-block:110px}
+.hire .eyebrow{color:rgba(255,255,255,.75)}
+.hire h2{font-size:clamp(64px, 13vw, 190px); margin-top:14px}
+.hire p{font-size:19px; max-width:46ch; margin-top:20px; color:rgba(255,255,255,.88)}
+.hire-actions{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:34px}
+.hire .btn.dark{background:var(--bg); border-color:var(--bg); color:#fff; font-size:17px; padding:1em 1.7em}
+.mail{display:flex; align-items:center; gap:8px; flex-wrap:wrap; font:500 16px/1 var(--f-mono)}
+.mail .addr{user-select:all; padding:.8em 1em; border:1.5px dashed rgba(255,255,255,.55); border-radius:999px; overflow-wrap:anywhere}
+.copy{font:700 14px/1 var(--f-body); padding:.85em 1.1em; border-radius:999px; border:0; background:rgba(255,255,255,.18); color:#fff; cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.28)}
+footer{background:var(--bg-2); border-top:1px solid var(--line)}
+footer .wrap{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; padding-block:26px; color:var(--fg-2); font-size:14px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--fg)}
+
+/* Motion */
+html.anim .big .ln i{transform:translateY(108%)}
+html.anim.loaded .big .ln i{transform:none; transition:transform 1.1s cubic-bezier(.16,.84,.2,1) var(--d,0s)}
+html.anim .name, html.anim .hero-sub{opacity:0; transform:translateY(12px)}
+html.anim.loaded .name{opacity:1; transform:none; transition:opacity .8s, transform .8s}
+html.anim.loaded .hero-sub{opacity:1; transform:none; transition:opacity .8s .55s, transform .8s .55s}
+html.anim .tv-in{opacity:0; transform:rotate(14deg) scale(.82) translateY(50px)}
+html.anim.loaded .tv-in{opacity:1; transform:none; transition:opacity .9s .45s, transform 1.3s cubic-bezier(.16,.84,.2,1) .45s}
+html.anim .traveler .hi{opacity:0; scale:.2}
+html.anim.loaded .traveler .hi{opacity:var(--hi-o,1); scale:1; transition:opacity .4s 1.3s, scale .7s cubic-bezier(.3,1.6,.5,1) 1.3s}
+html.anim.loaded.scrolled .traveler .hi{transition:none}
+html.anim .pill{opacity:0; translate:0 -30px}
+html.anim.loaded .pill{opacity:1; translate:0 0; transition:opacity .7s .9s, translate .9s cubic-bezier(.16,.84,.2,1) .9s}
+html.anim .reveal{opacity:0; transform:translateY(46px)}
+html.anim .reveal.in{opacity:1; transform:none; transition:opacity .9s ease var(--d,0s), transform 1s cubic-bezier(.16,.84,.2,1) var(--d,0s)}
+html.anim [data-split] .ln{display:block; overflow:hidden; padding-top:.06em; margin-top:-.06em}
+html.anim [data-split] .ln i{display:inline-block; font-style:normal; transform:translateY(108%)}
+html.anim [data-split].in .ln i{transform:none; transition:transform 1.1s cubic-bezier(.16,.84,.2,1) var(--d,0s)}
+.warp{position:fixed; z-index:200; width:40px; height:40px; margin:-20px 0 0 -20px; border-radius:50%; pointer-events:none; transform:scale(0); transition:transform .8s cubic-bezier(.7,0,.3,1)}
+.toast{position:fixed; left:50%; bottom:calc(22px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--fg); color:var(--bg); padding:.75em 1.2em; border-radius:999px; font-weight:700; z-index:120}
+</style>
+</head>
+<body>
+
+<div class="pill">
+  <img id="pill-photo" src="" alt="">
+  <span class="status"><i class="dot" aria-hidden="true"></i><span id="available"></span></span>
+  <nav aria-label="Main"><a href="#about">About</a><a href="#worlds">Work</a></nav>
+  <a class="btn blue hire hire-link" href="#hire">Hire me</a>
+</div>
+
+<!-- the photo card that travels from the hero into "What I do" -->
+<div class="traveler" id="traveler" aria-hidden="true">
+  <div class="tv-in">
+    <div class="flip" id="flip">
+      <div class="face front"><img id="face-a" src="" alt=""></div>
+      <div class="face back"><img id="face-b" src="" alt=""></div>
+    </div>
+    <span class="hi">Hi</span>
+  </div>
+</div>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="name" id="name"></p>
+          <h1 class="big" id="hero-words"></h1>
+          <p class="hero-sub" id="hero-sub"></p>
+        </div>
+        <div class="slot-a" id="slot-a"><div class="photo"><img id="hero-photo" src="" alt=""><span class="hi" aria-hidden="true">Hi</span></div></div>
+      </div>
+      <div class="hero-foot">
+        <p id="intro"></p>
+        <div class="ctas">
+          <a class="btn blue" href="#worlds">See my work</a>
+          <a class="btn hire-link" href="#hire">Hire me</a>
+        </div>
+      </div>
+    </div>
+    <div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <h2 class="sec-title">What I do</h2>
+      <div class="do">
+        <div class="acc" id="acc"></div>
+        <div class="slot-b" id="slot-b"><img id="do-img" src="" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about" style="padding-top:20px">
+    <div class="wrap about">
+      <div>
+        <h2 class="sec-title">About me</h2>
+        <p class="lead" id="about-lead"></p>
+        <p class="text" id="about-text"></p>
+        <ul class="contact-list" id="contact-list" aria-label="Contact"></ul>
+        <div id="qr-slot"></div>
+      </div>
+      <button class="about-photo" type="button" id="open-id" data-cursor="Open my ID" aria-label="Open Aheri's resume ID card">
+        <img id="about-photo" src="" alt="" loading="lazy">
+        <span class="id-hint"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.5 1.8-2.3 3.2-2.3s2.6.8 3.2 2.3M14.5 10h4M14.5 13.5h3"/></svg> Tap for my ID card</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="block" id="worlds" style="padding-top:20px">
+    <div class="wrap">
+      <h2 class="sec-title">Pick a world</h2>
+      <p class="sec-intro">My work lives in four places. Choose one to step inside.</p>
+      <div class="doors" id="doors"></div>
+    </div>
+  </section>
+
+  <section class="block tools" id="tools" style="padding-top:20px">
+    <div class="wrap">
+      <h2 class="sec-title">My toolkit</h2>
+      <div class="dock-wrap"><div class="dock" id="dock" role="list" aria-label="Software I use"></div></div>
+    </div>
+  </section>
+
+  <section class="hire" id="hire">
+    <div class="wrap">
+      <p class="eyebrow">Hire me</p>
+      <h2>Let's work<br>together</h2>
+      <p id="hire-text"></p>
+      <div class="hire-actions">
+        <a class="btn dark hire-link" href="#hire">Hire me →</a>
+        <div class="mail"><span class="addr" id="addr"></span><button class="copy" type="button" id="copy">Copy email</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="copyright"></span>
+    <span id="foot-links"></span>
+  </div>
+</footer>
+
+<!-- Resume ID card: opens from the photo in About me -->
+<dialog class="idc" id="idc" aria-label="Aheri Halder resume ID card">
+  <div class="lan" id="lan">
+    <div class="strap" aria-hidden="true"></div>
+    <div class="clip" aria-hidden="true"></div>
+    <div class="idcard" id="idcard" data-cursor="Flip">
+      <div class="idinner">
+        <div class="idf front" id="id-front"></div>
+        <div class="idf back" id="id-back"></div>
+      </div>
+    </div>
+    <div class="id-actions">
+      <button class="btn blue" type="button" id="id-flip">Flip card ↻</button>
+      <a class="btn" id="id-pdf" href="#" target="_blank" rel="noopener" hidden>Download resume ↓</a>
+      <button class="btn" type="button" id="id-close">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- All your text, links and projects are in content.js -->
+<script src="content.js"></script>
+<script src="icons.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const mailto = `mailto:${ME.email}?subject=${encodeURIComponent(ME.emailSubject || "")}`;
+const W = Object.assign({
+  industrial:   { name: "Product Design", line: "" },
+  uiux:         { name: "UI/UX Design", line: "" },
+  electronics:  { name: "Phygital Lab", line: "" },
+  illustration: { name: "Digital Illustration", line: "" }
+}, ME.worlds || {});
+const productP = PROJECTS.filter(p => p.group !== "uiux" && p.group !== "electronics");
+const uiuxP = PROJECTS.filter(p => p.group === "uiux");
+const elecP = PROJECTS.filter(p => p.group === "electronics");
+const ILL = (typeof ILLUSTRATIONS !== "undefined" ? ILLUSTRATIONS : []).filter(x => x && x.img);
+
+/* ---- Your details ---- */
+document.querySelectorAll(".hire-link").forEach(a => a.href = mailto);
+document.title = `${ME.name} · ${ME.title}`;
+$("#pill-photo").src = ME.photo;
+$("#available").textContent = ME.available || "Available for work";
+$("#name").textContent = ME.name;
+const words = [...String(ME.heroTop).split(" "), ...String(ME.heroBottom).split(" ")].filter(Boolean);
+$("#hero-words").innerHTML = words.map((w, i) => `<span class="ln${i === words.length - 1 ? " blue" : ""}" style="--d:${0.15 + i * 0.12}s"><i>${esc(w)}</i></span>`).join("");
+$("#hero-photo").src = ME.photo; $("#hero-photo").alt = ME.name;
+$("#hero-sub").textContent = ME.heroSub || "";
+$("#intro").innerHTML = `<b>${esc(ME.headline)}</b> ${esc(ME.intro)}`;
+$("#about-lead").textContent = ME.aboutLead;
+$("#about-text").textContent = ME.aboutText;
+$("#about-photo").src = ME.photo; $("#about-photo").alt = ME.name;
+$("#hire-text").textContent = ME.hireText;
+$("#addr").textContent = ME.email;
+$("#copyright").textContent = `© ${new Date().getFullYear()} ${ME.name}`;
+const once = (ME.services || []).map(s => `<span>${esc(s[0])}</span>`).join("");
+$("#strip").innerHTML = once + once + once + once;
+
+const ICONS = {
+  LinkedIn: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.95 1.33-1.95 2.7V21h-4V9.5Z"/></svg>',
+  YouTube: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg>',
+  Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  Behance: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.2 11.3c1-.5 1.6-1.3 1.6-2.5 0-2.3-1.7-2.9-3.7-2.9H0v12.3h6.3c2.3 0 4.5-1.1 4.5-3.7 0-1.6-.8-2.8-2.6-3.2ZM2.8 8h2.7c1 0 2 .3 2 1.5 0 1.1-.7 1.5-1.7 1.5h-3V8Zm3 8H2.8v-3.4h3.1c1.3 0 2.1.5 2.1 1.8 0 1.4-1 1.6-2.2 1.6ZM21.6 7H15.4V5.5h6.2V7ZM24 13.5c0-2.7-1.6-4.9-4.4-4.9-2.8 0-4.6 2.1-4.6 4.8 0 2.8 1.7 4.7 4.6 4.7 2.1 0 3.5-1 4.2-3h-2.2c-.2.8-1.2 1.2-1.9 1.2-1.4 0-2.1-.8-2.1-2.2H24v-.6Zm-6.4-1.1c.1-1.1.8-1.8 2-1.8 1.1 0 1.7.7 1.8 1.8h-3.8Z"/></svg>'
+};
+const socials = (ME.socials || []).filter(s => s.url);
+ICONS.Email = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>';
+// contact list: email first, then every social account with its ID
+const contacts = [{ name: "Email", handle: ME.email, url: mailto }, ...socials.map(s => ({ ...s, handle: s.handle || s.url.replace(/^https?:\/\/(www\.)?/, "") }))];
+$("#contact-list").innerHTML = contacts.map(c => `
+  <li><a class="contact${c.name === "Email" ? " hire-link" : ""}" href="${esc(c.url)}" ${c.name === "Email" ? "" : 'target="_blank" rel="noopener"'} data-cursor="${c.name === "Email" ? "Say hi" : "Visit"}">
+    <span class="ci">${ICONS[c.name] || ""}</span>
+    <span class="ct"><small>${esc(c.name)}</small><b>${esc(c.handle)}</b></span>
+    <span class="ca" aria-hidden="true">↗</span>
+  </a></li>`).join("");
+// any social with a "qr" picture gets a scan card (e.g. Instagram)
+$("#qr-slot").innerHTML = socials.filter(s => s.qr).map(s => `
+  <a class="qr-card" href="${esc(s.url)}" target="_blank" rel="noopener" data-cursor="Follow">
+    <img src="${esc(s.qr)}" alt="QR code for ${esc(s.name)} ${esc(s.handle || "")}" width="132" height="132">
+    <span class="qr-t"><small>Scan to follow on ${esc(s.name)}</small><b>${esc(s.handle || "")}</b><span>Point your phone camera at the code, or tap to open.</span></span>
+  </a>`).join("");
+$("#foot-links").innerHTML = [`<a href="${mailto}">Email</a>`, ...socials.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`)].join(" · ");
+
+/* ---- What I do ---- */
+const BACK = ME.photoBack || (ME.services?.[0] || [])[2] || ME.photo;
+$("#acc").innerHTML = (ME.services || []).map(([n, t, img]) => `
+  <details data-img="${esc(img)}"><summary>${esc(n)}<i aria-hidden="true">+</i></summary><p>${esc(t)}</p></details>`).join("");
+const doImg = $("#do-img"); doImg.src = BACK; doImg.alt = ME.name;
+$("#face-a").src = ME.photo;
+$("#face-b").src = BACK;
+[ME.photo, BACK, ...(ME.services || []).map(s => s[2])].forEach(src => { const i = new Image(); i.src = src; });
+function showBack(src) {
+  [doImg, $("#face-b")].forEach(img => {
+    if (img.getAttribute("src") === src) return;
+    img.style.opacity = 0; setTimeout(() => { img.src = src; img.style.opacity = 1; }, 220);
+  });
+}
+document.querySelectorAll("#acc details").forEach(d => d.addEventListener("toggle", () => {
+  if (d.open) { document.querySelectorAll("#acc details").forEach(o => { if (o !== d) o.open = false; }); showBack(d.dataset.img || BACK); }
+  else if (!document.querySelector("#acc details[open]")) showBack(BACK);
+}));
+
+/* ---- Worlds: each door opens its own page ---- */
+// the first project in each world sits in front (centre); the next two fan out behind it
+const fan = list => { const [a, b, c] = list; const order = [[b, "l"], [c, "r"], [a, "c"]].filter(x => x[0]);
+  return `<span class="fan" aria-hidden="true">${order.map(([p, pos]) => `<img class="${pos}" src="${esc(p.img)}" alt="" loading="lazy">`).join("")}</span>`; };
+const count = (n, w) => `${n} ${n === 1 ? w : w + "s"}`;
+$("#doors").innerHTML = `
+  <a class="door product" href="world.html#product" data-portal="#2D6AF0">
+    <span class="door-top"><span>World</span><span>${count(productP.length, "project")}</span></span>
+    ${fan(productP)}
+    <span class="door-bot"><h3>${esc(W.industrial.name)}</h3><p>${esc(W.industrial.line)}</p><span class="enter">Enter <b aria-hidden="true">→</b></span></span>
+  </a>
+  <a class="door uiux" href="world.html#uiux" data-portal="#8B5CF6">
+    <span class="door-top"><span>World</span><span>${count(uiuxP.length, "project")}</span></span>
+    ${fan(uiuxP)}
+    <span class="door-bot"><h3>${esc(W.uiux.name)}</h3><p>${esc(W.uiux.line)}</p><span class="enter">Enter <b aria-hidden="true">→</b></span></span>
+  </a>
+  ${elecP.length ? `<a class="door elec" href="world.html#lab" data-portal="#10B981">
+    <span class="door-top"><span>World</span><span>${count(elecP.length, "project")}</span></span>
+    ${fan(elecP)}
+    <span class="door-bot"><h3>${esc(W.electronics.name)}</h3><p>${esc(W.electronics.line)}</p><span class="enter">Enter <b aria-hidden="true">→</b></span></span>
+  </a>` : ""}
+  <a class="door ill" href="illustration.html" data-portal="radial-gradient(circle, #FFE3CF 0%, #F3D6FF 55%, #C9C3FF 100%)">
+    <span class="orb" aria-hidden="true"></span>
+    <span class="door-top"><span>Another world</span><span>${ILL.length ? count(ILL.length, "piece") : "Coming soon"}</span></span>
+    <span class="door-bot"><h3>${esc(W.illustration.name)}</h3><p>${esc(W.illustration.line)}</p><span class="enter">Step in <b aria-hidden="true">→</b></span></span>
+  </a>`;
+
+/* door click: a circle in the world's colour grows from the click, then the world opens */
+document.querySelectorAll("[data-portal]").forEach(a => a.addEventListener("click", e => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || e.metaKey || e.ctrlKey) return;
+  e.preventDefault();
+  const w = document.createElement("div"); w.className = "warp"; w.style.background = a.dataset.portal;
+  const x = e.clientX || innerWidth / 2, y = e.clientY || innerHeight / 2;
+  w.style.left = x + "px"; w.style.top = y + "px"; document.body.appendChild(w);
+  const need = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) / 20 + 2;
+  requestAnimationFrame(() => requestAnimationFrame(() => w.style.transform = `scale(${need})`));
+  setTimeout(() => location.href = a.getAttribute("href"), 750);
+}));
+addEventListener("pageshow", e => { if (e.persisted) document.querySelectorAll(".warp").forEach(w => w.remove()); });
+
+/* ---- Toolkit dock ---- */
+(() => {
+  const list = typeof TOOLS !== "undefined" ? TOOLS : [];
+  const icons = typeof TOOL_ICONS !== "undefined" ? TOOL_ICONS : {};
+  $("#dock").innerHTML = list.map(t => {
+    if (t === "|") return `<span class="sep" aria-hidden="true"></span>`;
+    const it = typeof t === "string" ? icons[t] : t;
+    if (!it) return "";
+    const inner = it.svg || `<img src="${esc(it.img)}" alt="">`;
+    return `<span class="tool" role="listitem" aria-label="${esc(it.name)}" title="${esc(it.name)}" data-cursor="${esc(it.name)}" style="--bg-t:${esc(it.bg || "#fff")}">${inner}</span>`;
+  }).join("");
+  if (!list.length) $("#tools").hidden = true;
+  // dock magnification (mouse only)
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const dock = $("#dock"), tools = [...dock.querySelectorAll(".tool")];
+  dock.addEventListener("mousemove", e => tools.forEach(t => {
+    const r = t.getBoundingClientRect(), d = Math.abs(e.clientX - (r.left + r.width / 2));
+    t.style.setProperty("--s", (1 + Math.max(0, 1 - d / 170) * 0.8).toFixed(3));
+  }));
+  dock.addEventListener("mouseleave", () => tools.forEach(t => t.style.setProperty("--s", 1)));
+})();
+
+/* ---- Resume ID card ---- */
+(() => {
+  const R = ME.resume || {};
+  const dlg = $("#idc"), card = $("#idcard"), lan = $("#lan");
+  const rows = contacts.map(c => `<a href="${esc(c.url)}" ${c.name === "Email" ? "" : 'target="_blank" rel="noopener"'}><small>${esc(c.name)}</small><b>${esc(c.handle)}</b></a>`).join("");
+  $("#id-front").innerHTML = `
+    <div class="id-top"><div class="id-org"><span>Portfolio pass</span><span>${new Date().getFullYear()}</span></div></div>
+    <div class="id-photo"><img src="${esc(ME.photo)}" alt="${esc(ME.name)}"></div>
+    <div class="id-body">
+      <div class="id-name">${esc(ME.name)}</div>
+      <div class="id-role">${esc(ME.title)}</div>
+      ${(R.education || [])[0] ? `<div class="id-uni">${esc(R.education[0][1])}${R.education[0][2] ? " · " + esc(R.education[0][2]) : ""}</div>` : ""}
+      <span class="id-pill">${esc(ME.available || "Available for work")}</span>
+      <div class="id-rows">${rows}${R.location ? `<div><small>Based in</small><b>${esc(R.location)}</b></div>` : ""}</div>
+    </div>
+    <div class="id-foot"><span class="barcode" aria-hidden="true"></span><span class="id-no">ID ${esc(R.idNo || "")}<br>Tap card to flip</span></div>`;
+  const icons = typeof TOOL_ICONS !== "undefined" ? TOOL_ICONS : {};
+  const tools = (typeof TOOLS !== "undefined" ? TOOLS : []).filter(t => t !== "|").map(t => typeof t === "string" ? icons[t] : t).filter(Boolean);
+  const list = (title, arr, fmt) => arr && arr.length ? `<div class="bk"><h5>${title}</h5><ul>${arr.map(fmt).join("")}</ul></div>` : "";
+  // resume blocks: an entry is [title, subtitle, date]; chips are short tags
+  const entries = (title, arr, map) => (arr || []).length ? `<div class="bk"><h5>${title}</h5><div class="ent">${arr.map(map).map(([t, sub, when]) =>
+    `<div class="en"><div class="en-t"><b>${esc(t)}</b>${when ? `<em>${esc(when)}</em>` : ""}</div>${sub ? `<span>${esc(sub)}</span>` : ""}</div>`).join("")}</div></div>` : "";
+  const chips = (title, arr, bare) => (arr || []).length ? `${bare ? "<div>" : '<div class="bk">'}<h5>${title}</h5><div class="chips">${arr.map(c => `<span>${esc(c)}</span>`).join("")}</div></div>` : "";
+  $("#id-back").innerHTML = `
+    <div class="id-top"><div class="id-org"><span>Resume</span><span>${esc(R.idNo || "")}</span></div><h4>${esc(ME.name)}</h4></div>
+    <div class="back-body">
+      ${entries("Education", R.education, e => [e[0], e[1], e[2], ""])}
+      ${entries("Experience", R.experience, e => [e[0] + (e[1] ? " · " + e[1] : ""), e[3], e[2], ""])}
+      ${chips("Certifications", R.certifications)}
+      <div class="bk two">${chips("Languages", R.languages, true)}${chips("Interests", R.interests, true)}</div>
+      ${tools.length ? `<div class="bk"><h5>Tools</h5><div class="tools-mini">${tools.map(t => `<span title="${esc(t.name)}" style="--bg-t:${esc(t.bg || "#fff")}">${t.svg || `<img src="${esc(t.img)}" alt="">`}</span>`).join("")}</div></div>` : ""}
+    </div>
+    <div class="id-foot"><span class="barcode" aria-hidden="true"></span><span class="id-no">${esc(ME.email)}<br>Tap card to flip</span></div>`;
+  if (R.pdf) { $("#id-pdf").href = R.pdf; $("#id-pdf").hidden = false; }
+  const flip = () => { card.classList.toggle("flipped"); lan.classList.remove("swing"); void lan.offsetWidth; lan.classList.add("swing"); };
+  card.addEventListener("click", e => { if (!e.target.closest("a")) flip(); });
+  $("#id-flip").addEventListener("click", flip);
+  $("#open-id").addEventListener("click", () => { card.classList.remove("flipped"); lan.classList.remove("swing"); lan.style.animation = "none"; void lan.offsetWidth; lan.style.animation = ""; dlg.showModal(); });
+  $("#id-close").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+})();
+
+/* ---- Every email link also copies the address, so it works even without an email app ---- */
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="mailto:"]'); if (!a) return;
+  try { navigator.clipboard.writeText(ME.email).then(() => toast("Opening your email app · " + ME.email + " copied"), () => toast("Opening your email app…")); }
+  catch { toast("Opening your email app…"); }
+});
+
+/* ---- Copy email ---- */
+function toast(t) { const d = document.createElement("div"); d.className = "toast"; d.setAttribute("role", "status"); d.textContent = t; (document.querySelector("dialog[open]") || document.body).appendChild(d); setTimeout(() => d.remove(), 2600); }
+$("#copy").addEventListener("click", () => {
+  const select = () => { const r = document.createRange(); r.selectNodeContents($("#addr")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Email selected. Press Ctrl+C to copy."); };
+  try { navigator.clipboard.writeText(ME.email).then(() => toast("Email copied"), select); } catch { select(); }
+});
+
+/* ===== Animation ===== */
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains("anim")) return;
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const smooth = (a, b, t) => { const x = clamp((t - a) / (b - a), 0, 1); return x * x * (3 - 2 * x); };
+
+  // page-load sequence
+  const start = () => root.classList.add("loaded");
+  (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve()).then(() => setTimeout(start, 30));
+
+  // titles rise, blocks fade up when they come into view
+  document.querySelectorAll(".sec-title, .hire h2").forEach(el => {
+    el.setAttribute("data-split", "");
+    el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map((t, i) => `<span class="ln" style="--d:${i * 0.1}s"><i>${t}</i></span>`).join("");
+  });
+  [[".hero-foot", 0], [".strip", 0], [".sec-intro", .1], [".about .lead", .05], [".about .text", .12], [".contact-list", .18],
+   [".hire .eyebrow", 0], [".hire p", .15], [".hire-actions", .25]]
+    .forEach(([sel, d]) => document.querySelectorAll(sel).forEach(el => { el.classList.add("reveal"); el.style.setProperty("--d", d + "s"); }));
+  document.querySelectorAll(".acc details, .door").forEach((el, i) => { el.classList.add("reveal"); el.style.setProperty("--d", ((i % 4) * 0.1) + "s"); });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+  document.querySelectorAll(".reveal, [data-split]").forEach(el => io.observe(el));
+  setTimeout(() => { start(); document.querySelectorAll(".reveal, [data-split]").forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); }); }, 2500);
+
+  // the travelling photo card: hero slot -> flips while moving -> lands in the "What I do" slot
+  const traveler = $("#traveler"), flipEl = $("#flip"), slotA = $("#slot-a"), slotB = $("#slot-b");
+  let tiltX = 0, tiltY = 0, flipAngle = 0;
+  const applyFlip = () => flipEl.style.transform = `rotateX(${tiltX}deg) rotateY(${flipAngle + tiltY}deg)`;
+  const anchor = (el, rot) => { const r = el.getBoundingClientRect(); return { cx: r.left + r.width / 2 + scrollX, cy: r.top + r.height / 2 + scrollY, w: el.offsetWidth, h: el.offsetHeight, rot }; };
+  function placeCard() {
+    const A = anchor(slotA, 3), B = anchor(slotB, -3);
+    const end = Math.max(1, B.cy - innerHeight / 2);
+    const p = clamp(scrollY / end, 0, 1), e = ease(p);
+    const cx = lerp(A.cx, B.cx, e), cy = lerp(A.cy, B.cy, e) + Math.sin(p * Math.PI) * -40;
+    const w = lerp(A.w, B.w, e), h = lerp(A.h, B.h, e);
+    const rot = lerp(A.rot, B.rot, e) + Math.sin(p * Math.PI) * -8;
+    traveler.style.width = w + "px"; traveler.style.height = h + "px";
+    traveler.style.transform = `translate3d(${cx - w / 2}px, ${cy - h / 2}px, 0) rotate(${rot}deg)`;
+    flipAngle = 180 * smooth(0.1, 0.85, p);
+    traveler.style.setProperty("--hi-o", (1 - clamp(p * 5, 0, 1)).toFixed(2));
+    if (p > 0.02) root.classList.add("scrolled");
+    applyFlip();
+  }
+  let ticking = false, tickAt = 0;
+  const onScroll = () => { placeCard(); ticking = false; };
+  const req = () => {
+    const now = performance.now();
+    if (ticking && now - tickAt > 250) ticking = false;
+    if (!ticking) { ticking = true; tickAt = now; requestAnimationFrame(onScroll); }
+  };
+  addEventListener("scroll", req, { passive: true });
+  addEventListener("resize", req);
+  addEventListener("load", req);
+  document.querySelectorAll("#acc details").forEach(d => d.addEventListener("toggle", () => setTimeout(req, 20)));
+  new ResizeObserver(req).observe(document.body);
+  onScroll();
+
+  if (!finePointer) return;
+  // photo tilts toward the mouse in the hero
+  $(".hero").addEventListener("mousemove", e => {
+    const r = flipEl.getBoundingClientRect();
+    tiltY = (e.clientX - (r.left + r.width / 2)) / innerWidth * 22;
+    tiltX = -(e.clientY - (r.top + r.height / 2)) / innerHeight * 22;
+    applyFlip();
+  });
+  $(".hero").addEventListener("mouseleave", () => { tiltX = tiltY = 0; applyFlip(); });
+  // magnetic buttons
+  document.querySelectorAll(".btn, .social").forEach(b => {
+    b.addEventListener("mousemove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.25}px, ${(e.clientY - r.top - r.height / 2) * 0.35}px)`; });
+    b.addEventListener("mouseleave", () => b.style.transform = "");
+  });
+})();
+</script>
+<script src="cursor.js"></script>
+</body>
+</html>

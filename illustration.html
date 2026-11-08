@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aheri Halder · Digital Illustration</title>
+<meta name="description" content="Digital illustration by Aheri Halder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* The "other world": a soft dawn sky with drifting shapes, a playful display face, and a gallery of frames.
+   It deliberately looks nothing like the main site. */
+:root{
+  --sky-1:#FFE3CF; --sky-2:#F3D6FF; --sky-3:#C9C3FF;
+  --ink:#2A1E5C; --ink-2:#5B4E8C; --frame:#FFFFFF; --dash:#9C8FD6; --pop:#FF6F91;
+  --f-display:"Bagel Fat One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0; color:var(--ink); font:400 17px/1.6 var(--f-body); background:radial-gradient(circle at 50% 30%, var(--sky-1), var(--sky-2) 50%, var(--sky-3) 100%) fixed; background-color:var(--sky-2); overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%; display:block}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px; border-radius:8px}
+.wrap{max-width:1180px; margin:0 auto; padding-left:max(18px, env(safe-area-inset-left, 0px)); padding-right:max(18px, env(safe-area-inset-right, 0px))}
+
+/* drifting shapes */
+.sky{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden}
+.sky i{position:absolute; display:block; border-radius:50%; opacity:.55; filter:blur(1px); animation:float 18s ease-in-out infinite}
+.sky i:nth-child(1){width:180px; height:180px; left:6%; top:14%; background:#FFC2D6}
+.sky i:nth-child(2){width:110px; height:110px; right:10%; top:22%; background:#B9E3FF; animation-duration:22s}
+.sky i:nth-child(3){width:240px; height:240px; right:-60px; bottom:6%; background:#FFD59E; animation-duration:26s}
+.sky i:nth-child(4){width:70px; height:70px; left:30%; bottom:12%; background:#CFFAD8; animation-duration:15s}
+.sky i:nth-child(5){width:26px; height:26px; left:52%; top:9%; background:#fff; opacity:.9}
+.sky i:nth-child(6){width:16px; height:16px; left:18%; top:58%; background:#fff; opacity:.9; animation-duration:12s}
+@keyframes float{50%{transform:translate(20px,-30px) scale(1.08)}}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+
+/* arrival: the portal colour fills the screen, then opens up */
+.arrive{position:fixed; inset:0; z-index:50; pointer-events:none; background:radial-gradient(circle, var(--sky-1), var(--sky-2) 55%, var(--sky-3)); animation:open .9s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes open{to{clip-path:circle(0% at 50% 50%); }}
+.arrive{clip-path:circle(150% at 50% 50%)}
+
+header{padding-top:calc(20px + env(safe-area-inset-top, 0px))}
+header .wrap{display:flex; justify-content:space-between; align-items:center; gap:12px}
+.back{display:inline-flex; align-items:center; gap:.5em; padding:.75em 1.2em; border-radius:999px; background:rgba(255,255,255,.7); backdrop-filter:blur(8px); text-decoration:none; font-weight:700; font-size:15px; box-shadow:0 6px 20px rgba(42,30,92,.12); transition:transform .2s}
+.back:hover{transform:translateX(-4px)}
+.sign{font-weight:700; font-size:15px; color:var(--ink-2)}
+
+.intro{padding-block:70px 40px; text-align:center}
+.intro .tag{display:inline-block; font-weight:700; font-size:13px; letter-spacing:.12em; text-transform:uppercase; background:var(--ink); color:#fff; padding:.55em 1em; border-radius:999px; transform:rotate(-3deg)}
+.intro h1{font:400 clamp(54px, 10vw, 140px)/.95 var(--f-display); margin:22px 0 0; letter-spacing:-.01em; text-wrap:balance}
+.intro h1 span{color:var(--pop)}
+.intro p{max-width:40ch; margin:22px auto 0; font-size:19px; color:var(--ink-2)}
+.rise{animation:rise 1s cubic-bezier(.16,.84,.2,1) both; animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0; transform:translateY(40px)}}
+
+.gallery{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:26px; padding-bottom:90px}
+@media (max-width:900px){ .gallery{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:540px){ .gallery{grid-template-columns:1fr} }
+.frame{position:relative; margin:0; background:var(--frame); border-radius:20px; padding:12px 12px 16px; box-shadow:0 18px 40px rgba(42,30,92,.14); transform:rotate(var(--r,0deg)); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; border:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%}
+.frame:hover{transform:rotate(0deg) translateY(-8px) scale(1.02); box-shadow:0 26px 50px rgba(42,30,92,.2)}
+.frame .pic{aspect-ratio:4/5; border-radius:12px; overflow:hidden; background:#F6F2FF}
+.frame .pic img{width:100%; height:100%; object-fit:cover}
+.frame figcaption{display:flex; justify-content:space-between; gap:10px; margin-top:12px; font-weight:700}
+.frame figcaption small{font-weight:500; color:var(--ink-2)}
+.frame.empty{cursor:default}
+.frame.empty .pic{display:grid; place-items:center; border:2.5px dashed var(--dash); background:repeating-linear-gradient(45deg, #FBF9FF 0 12px, #F4F0FF 12px 24px); color:var(--dash)}
+.frame.empty .pic svg{width:56px; height:56px}
+.frame.empty:hover{transform:rotate(var(--r,0deg)) translateY(-4px)}
+
+footer{padding-block:30px 40px; text-align:center; color:var(--ink-2); font-weight:600}
+
+dialog{border:0; padding:0; border-radius:20px; max-width:min(900px, calc(100% - 24px)); max-height:calc(100% - 24px); background:#fff; color:var(--ink); box-shadow:0 40px 90px rgba(42,30,92,.35)}
+dialog::backdrop{background:rgba(42,30,92,.55); backdrop-filter:blur(4px)}
+dialog img{max-height:78vh; width:auto; margin:0 auto}
+dialog .cap{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 18px}
+dialog button{border:0; background:var(--ink); color:#fff; font:700 14px/1 var(--f-body); padding:.7em 1.1em; border-radius:999px; cursor:pointer}
+</style>
+</head>
+<body>
+<div class="arrive" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html#worlds">← Back to portfolio</a>
+    <span class="sign" id="sign"></span>
+  </div>
+</header>
+
+<main>
+  <section class="intro wrap">
+    <span class="tag rise" style="--d:.5s">Another world</span>
+    <h1 class="rise" style="--d:.6s">Digital <span>Illustration</span></h1>
+    <p class="rise" id="lede" style="--d:.75s"></p>
+  </section>
+  <section class="wrap">
+    <div class="gallery" id="gallery"></div>
+  </section>
+</main>
+
+<footer><span id="foot"></span></footer>
+
+<dialog id="view" aria-label="Illustration">
+  <img id="view-img" src="" alt="">
+  <div class="cap"><span id="view-cap"></span><button type="button" id="view-close">Close</button></div>
+</dialog>
+
+<!-- Add your illustrations in content.js (the ILLUSTRATIONS list) -->
+<script src="content.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const items = (typeof ILLUSTRATIONS !== "undefined" ? ILLUSTRATIONS : []).filter(x => x && x.img);
+$("#sign").textContent = ME.name;
+$("#foot").textContent = `© ${new Date().getFullYear()} ${ME.name}`;
+const tilt = i => [-2.5, 1.8, -1.2, 2.2, -1.8, 1.2][i % 6] + "deg";
+const pencil = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 8l10 10L18 40H8V30z"/><path d="M26 12l10 10"/></svg>';
+
+if (items.length) {
+  $("#lede").textContent = "Characters, places and little stories, drawn digitally.";
+  $("#gallery").innerHTML = items.map((it, i) => `
+    <button class="frame rise" type="button" data-i="${i}" style="--r:${tilt(i)}; --d:${0.85 + i * 0.08}s">
+      <div class="pic"><img src="${esc(it.img)}" alt="${esc(it.title)}" loading="lazy"></div>
+      <figcaption>${esc(it.title)} <small>${esc(it.note || "")}</small></figcaption>
+    </button>`).join("");
+  const dlg = $("#view");
+  document.querySelectorAll(".frame").forEach(f => f.addEventListener("click", () => {
+    const it = items[+f.dataset.i];
+    $("#view-img").src = it.img; $("#view-img").alt = it.title;
+    $("#view-cap").textContent = it.title + (it.note ? " · " + it.note : "");
+    dlg.showModal();
+  }));
+  $("#view-close").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+} else {
+  // nothing added yet: show empty frames
+  $("#lede").textContent = "This world is still being drawn. New illustrations are on their way.";
+  $("#gallery").innerHTML = Array.from({ length: 6 }, (_, i) => `
+    <figure class="frame empty rise" style="--r:${tilt(i)}; --d:${0.85 + i * 0.08}s">
+      <div class="pic">${pencil}</div>
+      <figcaption>Frame ${String(i + 1).padStart(2, "0")} <small>Coming soon</small></figcaption>
+    </figure>`).join("");
+}
+</script>
+<script src="cursor.js"></script>
+</body>
+</html>
