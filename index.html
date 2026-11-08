@@ -272,9 +272,11 @@ dialog.idc::backdrop{background:rgba(5,6,10,.78); backdrop-filter:blur(6px)}
   .door, .doors:hover .door, .doors .door:hover{flex:1 1 calc(50% - 7px); min-height:380px}
 }
 @media (max-width:860px){
-  .doors{flex-direction:column; height:auto}
-  .door{min-height:360px}
+  .doors{flex-direction:column; height:auto; gap:22px}
   .doors:hover .door, .doors .door:hover{flex-grow:1}
+  /* phones: the doors stack on top of each other while you scroll, like a deck of cards */
+  .door{position:sticky; top:calc(86px + var(--i, 0) * 14px); min-height:min(64vh, 520px); transform-origin:50% 0;
+    box-shadow:0 -14px 40px rgba(0,0,0,.5); filter:brightness(var(--b, 1)); will-change:transform}
 }
 
 /* Toolkit dock: app icons only; they swell as the mouse passes, like a desktop dock */
@@ -696,7 +698,20 @@ $("#copy").addEventListener("click", () => {
     applyFlip();
   }
   let ticking = false, tickAt = 0;
-  const onScroll = () => { placeCard(); ticking = false; };
+  // phones: as the next world door slides over, the one underneath shrinks and darkens
+  const doors = [...document.querySelectorAll(".door")];
+  doors.forEach((d, i) => d.style.setProperty("--i", i));
+  const phoneDoors = matchMedia("(max-width:860px)");
+  function stackDoors() {
+    doors.forEach((d, i) => {
+      if (!phoneDoors.matches) { d.style.transform = ""; d.style.setProperty("--b", 1); return; }
+      const next = doors[i + 1]; let prog = 0;
+      if (next) { const top = d.getBoundingClientRect().top, nTop = next.getBoundingClientRect().top; prog = clamp(1 - (nTop - top) / d.offsetHeight, 0, 1); }
+      d.style.transform = `scale(${(1 - prog * 0.08).toFixed(4)})`;
+      d.style.setProperty("--b", (1 - prog * 0.5).toFixed(3));
+    });
+  }
+  const onScroll = () => { placeCard(); stackDoors(); ticking = false; };
   const req = () => {
     const now = performance.now();
     if (ticking && now - tickAt > 250) ticking = false;
