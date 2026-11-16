@@ -114,6 +114,7 @@ const ILLUSTRATIONS = [
    kind      short label, e.g. "Product Design · Healthcare"
    one       one-sentence summary (shown on cards)
    img       cover image
+   doorImg   (optional) a different picture for the world door on the main page
    tags      small labels
    team      e.g. "With Shreya Sawant" or "Solo project" ("" to hide)
    specs     key facts as ["Label", "Value"] pairs
@@ -647,7 +648,8 @@ const PROJECTS = [
     title: "Budget Buddy",
     kind: "UI/UX · Mobile app",
     one: "A money tracker for students that logs UPI payments automatically and remembers who owes you.",
-    img: "assets/img/budgetbuddy.jpg",
+    img: "assets/img/budgetbuddy-dark.jpg",
+    doorImg: "assets/img/budgetbuddy-door.jpg",     // picture on the UI/UX world door (your real phone screen)
     tags: ["UX research", "App design", "React Native"],
     team: "Solo project",
     specs: [
@@ -774,7 +776,7 @@ const PROJECTS = [
           "Lend tracker, savings goals, friendly reminders at most once a day",
           "10 currencies, custom month start, dark mode and app lock"
         ],
-        imgs: ["assets/img/cs/budgetbuddy-23.jpg", "assets/img/cs/budgetbuddy-24.jpg", "assets/img/budgetbuddy-app.jpg"]
+        imgs: ["assets/img/cs/budgetbuddy-23.jpg", "assets/img/cs/budgetbuddy-24.jpg", "assets/img/budgetbuddy-phone.jpg"]
       },
       {
         h: "Building it for real",

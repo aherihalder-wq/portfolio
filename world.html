@@ -5,7 +5,7 @@
 <script>
   // always show the newest version: compare with version.txt and reload once if this page is an old saved copy
   (function () {
-    var SITE_V = "20261116e";
+    var SITE_V = "20261116f";
     try {
       fetch("version.txt", { cache: "no-store" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (v) {
         v = (v || "").trim();
@@ -316,7 +316,7 @@ dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js?v=20261116e"></script>
+<script src="content.js?v=20261116f"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -509,6 +509,6 @@ dlg.addEventListener("scroll", () => {
 $("#close").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 </script>
-<script src="cursor.js?v=20261116e"></script>
+<script src="cursor.js?v=20261116f"></script>
 </body>
 </html>
