@@ -5,7 +5,7 @@
 <script>
   // always show the newest version: compare with version.txt and reload once if this page is an old saved copy
   (function () {
-    var SITE_V = "20261116d";
+    var SITE_V = "20261116e";
     try {
       fetch("version.txt", { cache: "no-store" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (v) {
         v = (v || "").trim();
@@ -293,6 +293,8 @@ dialog.idc::backdrop{background:rgba(5,6,10,.78); backdrop-filter:blur(6px)}
 @media (max-width:1100px) and (min-width:861px){
   .doors{flex-wrap:wrap; height:auto}
   .door, .doors:hover .door, .doors .door:hover{flex:1 1 calc(50% - 7px); min-height:380px}
+  /* exactly three doors: one row of three instead of 2 + 1 */
+  .doors:has(> .door:nth-child(3):last-child) .door{flex:1 1 calc(33.333% - 10px)}
 }
 @media (max-width:860px){
   .doors{flex-direction:column; height:auto; gap:22px}
@@ -351,6 +353,14 @@ html.anim [data-split] .ln i{display:inline-block; font-style:normal; transform:
 html.anim [data-split].in .ln i{transform:none; transition:transform 1.1s cubic-bezier(.16,.84,.2,1) var(--d,0s)}
 .warp{position:fixed; z-index:200; width:40px; height:40px; margin:-20px 0 0 -20px; border-radius:50%; pointer-events:none; transform:scale(0); transition:transform .8s cubic-bezier(.7,0,.3,1)}
 .toast{position:fixed; left:50%; bottom:calc(22px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--fg); color:var(--bg); padding:.75em 1.2em; border-radius:999px; font-weight:700; z-index:120}
+
+/* touch screens (phones and iPads): comfortable tap areas for small links and buttons */
+@media (pointer:coarse){
+  .pill .hire{min-height:40px}
+  footer a{display:inline-block; padding:10px 4px}
+  .switch a{min-height:40px}
+  .back{min-height:42px}
+}
 </style>
 </head>
 <body>
@@ -476,8 +486,8 @@ html.anim [data-split].in .ln i{transform:none; transition:transform 1.1s cubic-
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js?v=20261116d"></script>
-<script src="icons.js?v=20261116d"></script>
+<script src="content.js?v=20261116e"></script>
+<script src="icons.js?v=20261116e"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -766,6 +776,6 @@ $("#copy").addEventListener("click", () => {
   });
 })();
 </script>
-<script src="cursor.js?v=20261116d"></script>
+<script src="cursor.js?v=20261116e"></script>
 </body>
 </html>

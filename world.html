@@ -5,7 +5,7 @@
 <script>
   // always show the newest version: compare with version.txt and reload once if this page is an old saved copy
   (function () {
-    var SITE_V = "20261116d";
+    var SITE_V = "20261116e";
     try {
       fetch("version.txt", { cache: "no-store" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (v) {
         v = (v || "").trim();
@@ -260,6 +260,14 @@ dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
 .cs-next small{font:500 11px/1 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--fg-2)}
 .cs-next b{font:400 clamp(28px, 3vw, 40px)/1 var(--f-display); text-transform:uppercase; transition:color .2s}
 .cs-next:hover b{color:var(--acc-hi)}
+
+/* touch screens (phones and iPads): comfortable tap areas for small links and buttons */
+@media (pointer:coarse){
+  .pill .hire{min-height:40px}
+  footer a{display:inline-block; padding:10px 4px}
+  .switch a{min-height:40px}
+  .back{min-height:42px}
+}
 </style>
 </head>
 <body>
@@ -308,7 +316,7 @@ dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js?v=20261116d"></script>
+<script src="content.js?v=20261116e"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -501,6 +509,6 @@ dlg.addEventListener("scroll", () => {
 $("#close").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 </script>
-<script src="cursor.js?v=20261116d"></script>
+<script src="cursor.js?v=20261116e"></script>
 </body>
 </html>
