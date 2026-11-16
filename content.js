@@ -42,11 +42,11 @@ const ME = {
   heroSub: "Designing products, interactions and meaningful experiences.",
   available: "Open to internships",   // text in the small pill at the top
   headline: "I design objects and the interfaces that run them.",
-  intro: "Beds for rural maternal care, projector controls for classrooms, an app that tracks student spending, a board game run by a microcontroller. I start with the people who use these things and build until the whole system works.",
+  intro: "Beds for rural maternal care, a dry fruit slicer that is easier on the hands, an app that tracks student spending, a board game run by a microcontroller. I start with the people who use these things and build until the whole system works.",
 
   // About me section
   aboutLead: "Hi, I'm Aheri. I'm a product design student who works where physical products and digital interfaces meet.",
-  aboutText: "I like problems where an object, a screen and the people around them all have to work together: a bed that an ASHA worker can deliver and set up, a projector you can control without climbing on a chair, a board game whose rules live inside an ESP32. I start with research (surveys, interviews, sitting in the actual chairs) and I test ideas by building them.",
+  aboutText: "I like problems where an object, a screen and the people around them all have to work together: a bed that an ASHA worker can deliver and set up, a kitchen tool that takes the strain off your wrist, a board game whose rules live inside an ESP32. I start with research (surveys, interviews, sitting in the actual chairs) and I test ideas by building them.",
   // "What I do" list: [name, description, picture shown beside it]
   services: [
     ["Product Design", "Products shaped around real bodies and real places: sketching, CAD and rendering, ergonomics, prototyping and costing.", "assets/img/aheri-sketchbook.jpg"],
@@ -428,124 +428,6 @@ const PROJECTS = [
         big: true,
         text: "Twist → Grate → Collect.",
         imgs: ["assets/img/cs/grateo-19.jpg", "assets/img/cs/grateo-20.jpg", "assets/img/grateo.jpg"]
-      }
-    ],
-    links: []
-  },
-
-  /* ---------------------------------------------------------------- Projector */
-  {
-    id: "projector",
-    group: "industrial",
-    status: "",
-    title: "Classroom Projector Interaction",
-    kind: "Product Design + UI/UX",
-    one: "An ID-card-activated control system that makes a ceiling projector easy to find, reach and use.",
-    img: "assets/img/projector.jpg",
-    tags: ["Ergonomics", "Cognitive load", "UI design", "Prototype"],
-    team: "With Anirudh Shukla, Aeshwa Patel and Charmi Javeri",
-    specs: [
-      ["Users studied", "50th & 75th percentile"],
-      ["Workload test", "NASA-TLX, 9 tasks"],
-      ["Brands compared", "5"],
-      ["UI rounds", "2 iterations"]
-    ],
-    overview: "Every classroom has a ceiling projector, and almost everyone struggles with it. The switches are too high, the buttons look alike, and nothing tells you whether the projector has heard you. We kept the projector and redesigned how people control it: an ID card starts the session, a laptop control panel does the work, and a wall unit with big keys and a small screen gives clear feedback.",
-    problem: "How might we make projector controls easier to find, reach and understand, while giving clear feedback when something goes wrong?",
-    // 1 · Problem & Design Thinking
-    forWhom: "Students and staff who use classroom projectors, especially first-time users and shorter users who can't reach the controls.",
-    why: "Nobody needed a new projector. They needed to reach the controls, recognise them and know the projector had responded. Moving control to the laptop solves reach, the ID card removes the “which switch?” guesswork, and the LCD confirms every action.",
-    // 2 · Design Process & Final Outcome  (steps: Research, Ideate, Prototype, Test, Refine; leave out any you didn't do)
-    process: [
-      ["Research", "Task-flow observation by body height, 4 user profiles, a NASA-TLX workload test on 9 tasks and a 5-brand competitor study."],
-      ["Ideate", "Turned pain points into principles (Hick's law, Fitts' law, feedback, error recovery), then sketched layouts and the card-slot idea."],
-      ["Prototype", "A physical wall unit with tactile keys and an LCD, a laptop control console, a storyboard and an animation."],
-      ["Test", "Users found the laptop interface easier, the LCD feedback clear and the ID card set-up simpler."],
-      ["Refine", "Two interface iterations to a calmer console, and an HDMI backup because the system relies on Wi-Fi."]
-    ],
-    outcome: "An ID-card-activated projector control system: a laptop console over Wi-Fi, plus a wall unit with big tactile keys and an LCD that confirms every action.",
-    outcomeImg: "assets/img/projector-concept.jpg",
-    // A video shown right after the two panels. For a Google Drive video, keep the sharing on
-    // "Anyone with the link" and use the link ending in /preview. Remove this line for no video.
-    video: { title: "See it working", note: "The full interaction, from inserting the ID card to controlling the projector. It plays on a loop, like a GIF.", src: "assets/video/projector-loop.mp4", poster: "assets/video/projector-poster.jpg", link: "https://drive.google.com/file/d/1ou3CaU7yUCeHYks9YarTM22cZBSLSSb6/view", linkLabel: "Watch with sound" },
-    story: [
-      {
-        h: "Why the projector",
-        text: "Using a projector is a chain of small steps: find the right switch, turn it on, pull down the screen, connect the laptop, fix the input, and do it all in reverse at the end. Each step has a physical and a mental cost. We listed nine design problems.",
-        points: [
-          "Accessibility: controls are mounted too high",
-          "Recognition and consistency: switches and buttons are unlabeled and differ between rooms",
-          "Feedback: no sign the projector has started or received a command",
-          "Connectivity and error recovery: HDMI and blank-screen problems need outside help",
-          "Cognitive load, physical effort and dependence on a lost remote"
-        ],
-        imgs: ["assets/img/cs/projector-04.jpg"]
-      },
-      {
-        h: "Watching people use it",
-        text: "We observed the full task flow with a taller user (75th percentile) and an average-height user (50th percentile). Shorter users had to stretch, stand on a chair or use a stick to reach the controls.",
-        imgs: ["assets/img/cs/projector-05.jpg", "assets/img/cs/projector-06.jpg"],
-        cap: "Task flow across body heights, and one of four user profiles."
-      },
-      {
-        h: "Measuring the effort",
-        text: "Users rated nine tasks with the NASA-TLX workload test, which scores mental, physical and time pressure, effort, performance and frustration.",
-        points: [
-          "Tasks: find the power switch, switch on, press power, pull down the screen, connect HDMI, power off, raise the screen, wrap the cable, switch off at the wall",
-          "Connecting HDMI and finding the right switch caused the most frustration",
-          "Physical demand peaked for pulling the screen and reaching the ceiling unit"
-        ],
-        imgs: ["assets/img/cs/projector-11.jpg", "assets/img/cs/projector-12.jpg"]
-      },
-      {
-        h: "Key findings",
-        points: [
-          "Users struggle to reach the controls, especially shorter users",
-          "Many are unsure which switch does what, and first-timers depend on others",
-          "The projector takes several seconds to respond, with no visible feedback",
-          "Layouts differ between classrooms, so experience doesn't transfer",
-          "Everyone wanted a more accessible, understandable and independent way to use it"
-        ],
-        imgs: ["assets/img/cs/projector-10.jpg"]
-      },
-      {
-        h: "Competitors and principles",
-        text: "We compared Epson, BenQ, ViewSonic, Sony and Panasonic on control access, button recognition, feedback, connectivity and error recovery. Then we turned the pain points into design principles from cognitive ergonomics.",
-        points: [
-          "Hick's law and recognition over recall: fewer, clearly labelled choices",
-          "Fitts' law and affordance: big targets within easy reach",
-          "Error prevention and recovery for connection problems",
-          "Visibility of system status and instant feedback (Doherty threshold)"
-        ],
-        imgs: ["assets/img/cs/projector-15.jpg", "assets/img/cs/projector-17.jpg"]
-      },
-      {
-        h: "The concept",
-        text: "Instead of redesigning the projector, we focused on the physical controls and the feedback around them.",
-        points: [
-          "Staff insert their college ID card into a wall slot to start a session",
-          "Their laptop connects to a control panel over the college Wi-Fi",
-          "From the laptop they raise or lower the screen, choose the source, set volume and adjust the picture",
-          "A wall unit with large tactile keys and an LCD works as a backup and shows every action",
-          "To finish, they disconnect and take their card back"
-        ],
-        imgs: ["assets/img/cs/projector-19.jpg", "assets/img/projector-concept.jpg"],
-        cap: "Early sketches and the final system."
-      },
-      {
-        h: "The interface",
-        text: "The laptop console shows everything at a glance: lamp life, input source, audio, connection status and a screen slider. Two rounds of iteration made it calmer and quicker to use.",
-        imgs: ["assets/img/projector-ui.jpg", "assets/img/cs/projector-29.jpg", "assets/img/cs/projector-30.jpg"]
-      },
-      {
-        h: "Physical keys with feedback",
-        text: "A small LCD sits above the keys and confirms every press, so users always know whether the projector received the command. The keys are only needed when the laptop can't be used.",
-        imgs: ["assets/img/cs/projector-23.jpg"]
-      },
-      {
-        h: "Prototype and testing",
-        text: "We built a physical prototype of the wall unit and the console, storyboarded the whole interaction and made an animation of it. Users said the laptop interface made the projector easier to operate, the LCD made it clear whether a button worked, and the ID card made setup feel simpler. Because the system depends on stable Wi-Fi, we kept an HDMI connection as a backup.",
-        imgs: ["assets/img/cs/projector-28.jpg", "assets/img/cs/projector-26.jpg", "assets/img/projector.jpg"]
       }
     ],
     links: []
