@@ -281,52 +281,144 @@ const PROJECTS = [
     status: "",
     title: "GRATEO",
     kind: "Product Design · Kitchen",
-    one: "An effortless dry fruit slicer that grates in both directions, designed from a study of how people cut nuts at home.",
+    one: "A dry fruit slicer that grates in both twist directions, so a short back-and-forth twist replaces tiring full rotations.",
     img: "assets/img/grateo-wide.jpg",
-    tags: ["User study", "Mechanism", "Ergonomics"],
-    team: "",
+    tags: ["User study", "Ergonomics", "Mechanism", "Sketching", "3D render"],
+    team: "Solo project",
     specs: [
-      ["Product", "Dry fruit slicer"],
-      ["Action", "Bi-directional grating"],
-      ["Research", "Users, stakeholders, benchmarking"]
+      ["Product", "Hand-held dry fruit slicer"],
+      ["Motion", "Short back-and-forth twist"],
+      ["Blade", "6 slits, opposite angles"],
+      ["Materials", "Food-grade ABS, stainless steel"]
     ],
-    overview: "GRATEO is a hand-held dry fruit slicer. Most slicers only cut when you twist them one way, so half of every movement is wasted and the wrist works hard. GRATEO cuts in both directions, so slicing is faster and easier on the hand.",
-    problem: "Slicing dry fruits by hand is slow and fiddly, and existing slicers only work in one direction. How might a slicer be safer, more efficient and easier on the hand?",
+    overview: "GRATEO is a hand-held dry fruit slicer redesigned around the body. Existing twist slicers only cut in one direction, so people rotate the cap a full 360° again and again, which strains the wrist, elbow and shoulder. GRATEO cuts in both directions, so a short, natural back-and-forth twist does the job. Twist. Done.",
+    problem: "Existing hand-held slicers need continuous 360° rotation in one direction. Hard dry fruits resist the blade, so the repeated grip, twist and release cycle concentrates stress on the wrist and pushes force up to the elbow and shoulder.",
     // 1 · Problem & Design Thinking
-    forWhom: "Home cooks who slice dry fruits often, including older users with less grip strength.",
-    why: "Existing slicers only cut on one direction of the twist, so half of every movement is wasted. Cutting in both directions halves the effort and the time with the same simple hand action.",
-    // 2 · Design Process & Final Outcome  (steps: Research, Ideate, Prototype, Test, Refine; leave out any you didn't do)
+    forWhom: "Indian households, including elderly users and teens, and small food businesses such as mithai shops, bakeries and cafés that slice dry fruits often.",
+    why: "People avoid kitchen tools that take effort, so the fix had to remove effort rather than add features. Making the blade and the inner flaps work in both directions turns a full rotation into a short twist: the product stays familiar, but the strain goes away.",
+    // 2 · Design Process & Final Outcome
     process: [
-      ["Research", "History of slicing tools, a user behaviour study, stakeholder mapping and competitive benchmarking."],
-      ["Ideate", "Analysed the mechanism, interaction and body strain of existing slicers to find the wasted effort."],
-      ["Prototype", "Designed a bi-directional grating mechanism, its parts and final renders."]
+      ["Research", "History of slicing tools, typical and atypical slicing methods, user behaviour, stakeholders, a product teardown, a material study and competitor benchmarking."],
+      ["Ideate", "Mapped the mechanism, the hand interaction and body strain, then brainstormed and sketched blade, flap and body ideas."],
+      ["Prototype", "Final concept sketches, a 3D model with exploded parts, and renders."],
+      ["Test", "Compared the new short twist with the old full rotation: minimal wrist strain, no elbow or shoulder involvement, faster cutting and less fatigue."],
+      ["Refine", "Added clearance so the two flaps pass and re-engage smoothly every time the twist changes direction."]
     ],
-    outcome: "GRATEO: a compact slicer that grates on both the forward and the return twist and collects the slices in its container.",
-    outcomeImg: "assets/img/grateo.jpg",
+    outcome: "GRATEO: a compact slicer with six opposite-angled blade slits and two opposing flaps, so it grates on both the forward and the return twist and collects the slices in a clear container. Twist → Grate → Collect.",
+    outcomeImg: "assets/img/cs/grateo-19.jpg",
     story: [
       {
-        h: "Research and user study",
-        text: "The project started with a study of how people slice dry fruits today, from knives to specialised kitchen gadgets.",
+        h: "How people slice dry fruits today",
+        text: "I started by tracing how slicing tools evolved, then looked at the conventional and improvised ways people actually cut dry fruits at home, including unsafe ones.",
         points: [
-          "History of slicing tools: manual knives, specialised kitchen tools, mechanised hand-held devices, compact multi-function products",
-          "Typical and atypical ways people slice dry fruits at home",
-          "User behaviour analysis and stakeholder mapping",
-          "Competitive benchmarking of knives, graters and choppers on effort, safety, output and cleaning"
-        ]
+          "Early: basic knives, fully dependent on the user's skill and control",
+          "Mid: graters and slicers, more consistent with less manual effort",
+          "Late: rotary and press-based hand-held slicers that amplify force",
+          "Now: compact multi-function products that combine storage, slicing and safety"
+        ],
+        imgs: ["assets/img/cs/grateo-02.jpg", "assets/img/cs/grateo-03.jpg"],
+        cap: "History of slicing tools, and a map of typical and atypical slicing methods."
       },
       {
-        h: "Studying existing slicers",
-        text: "We took apart the mechanism of a typical twist slicer and studied how the hand and wrist work while using it.",
+        h: "What users actually do",
         points: [
-          "Mechanism: a one-direction twist drives the blades",
-          "Interaction: repeated twisting with a firm grip",
-          "Body strain: the wrist and fingers take most of the load"
-        ]
+          "Most people prefer eating dry fruits directly rather than preparing them",
+          "Dry fruits are often broken by hand instead of sliced",
+          "Tools come out only for cooking or garnishing",
+          "People avoid tools that take effort or are hard to clean",
+          "Primary users: Indian households, elderly users, children and teens",
+          "Secondary users: mithai shop owners, bakeries and cafés"
+        ],
+        imgs: ["assets/img/cs/grateo-04.jpg"]
       },
       {
-        h: "The design",
-        text: "GRATEO uses a mechanism that grates on both the forward and the return twist, with a container that collects the slices.",
-        imgs: ["assets/img/grateo.jpg"]
+        h: "Taking an existing slicer apart",
+        text: "I took apart a typical twist slicer to understand every part and how people use and clean it.",
+        points: [
+          "Parts: collector lid, dry fruit loading chamber, stainless steel cutting blade, body, O-ring lock and twisting grip cap",
+          "Use: put the dry fruits in, place the top grip, rotate",
+          "Cleaning: open the O-ring (only some models allow this), then open the main body"
+        ],
+        imgs: ["assets/img/cs/grateo-05.jpg", "assets/img/cs/grateo-07.jpg"]
+      },
+      {
+        h: "Materials",
+        points: [
+          "Food-grade ABS body: safe for food contact, easy to mould into complex shapes in any colour, with good impact, heat and abrasion resistance",
+          "A transparent container shows how many slices have collected without opening it",
+          "The round form seals completely, so no pieces escape",
+          "Stainless steel cross blade: with at least 10% chromium, it forms a protective layer that resists rust and heals itself when scratched"
+        ],
+        imgs: ["assets/img/cs/grateo-06.jpg"]
+      },
+      {
+        h: "Competitive benchmarking",
+        text: "I compared knives, graters, twist slicers, lever slicers and choppers on ease of use, effort, output consistency, safety, cleaning and portability.",
+        points: [
+          "Knives are flexible and portable but inconsistent and unsafe",
+          "Graters give consistent output but are hard to clean",
+          "Twist slicers are safe and portable but need a lot of effort",
+          "Lever slicers and choppers are easy to use but bulky or hard to clean",
+          "Every product trades effort against control, which left room for a balanced solution"
+        ],
+        imgs: ["assets/img/cs/grateo-08.jpg"]
+      },
+      {
+        h: "How the mechanism works",
+        points: [
+          "Dry fruits sit in the chamber where the blades attach",
+          "A flap inside the body holds the nuts so they don't spin with the cap",
+          "The user twists the upper grip a full 360° in one direction",
+          "Cross blades rotate against the stationary dry fruits and cut them into fine pieces"
+        ],
+        imgs: ["assets/img/cs/grateo-09.jpg"]
+      },
+      {
+        h: "Interaction and body strain",
+        text: "Watching people use the slicer showed where the effort really goes. The motion breaks into a cycle that repeats until the fruit is cut: grip, twist, release, reposition, repeat.",
+        points: [
+          "Continuous rotation creates localised stress on the wrist joint",
+          "Hard dry fruits resist the blade, pushing force up to the elbow and shoulder",
+          "The single-direction motion means half of every hand movement is wasted"
+        ],
+        imgs: ["assets/img/cs/grateo-10.jpg", "assets/img/cs/grateo-11.jpg"]
+      },
+      {
+        h: "Pain points and design brief",
+        points: [
+          "Pain points: repetitive strain, wrist fatigue, discomfort and an interrupted workflow",
+          "Opportunity: redesign the interaction to cut strain and repetitive motion",
+          "Opportunity: improve the mechanism so the hand moves naturally",
+          "Opportunity: improve the blade so it cuts faster"
+        ],
+        text: "Brief: redesign the hand-held dry fruit slicer around its core ergonomic failure, so cutting motion is shared by both hands equally and the strain of repeated grip, twist and release cycles is removed.",
+        imgs: ["assets/img/cs/grateo-12.jpg"]
+      },
+      {
+        h: "Brainstorming and ideation",
+        text: "I sketched many body forms, then explored blade, flap and lid details until the bi-directional idea took shape.",
+        imgs: ["assets/img/cs/grateo-13.jpg", "assets/img/cs/grateo-14.jpg"]
+      },
+      {
+        h: "Final concept",
+        text: "The final concept keeps the familiar stacked form (grip cap, blade, body and container) and changes how it moves.",
+        imgs: ["assets/img/cs/grateo-16.jpg"]
+      },
+      {
+        h: "Key design innovations",
+        points: [
+          "Blade: the old single-direction blade needs full rotation; GRATEO's six slits with opposite angles cut in both directions",
+          "Flaps: one flap only grips in one direction; two opposite flaps grip in both twist directions",
+          "Clearance: designed gaps let the flaps pass and re-engage smoothly when the twist reverses",
+          "Motion: a short back-and-forth twist replaces full rotation"
+        ],
+        text: "Impact: minimal wrist strain, no elbow or shoulder involvement, faster cutting and less fatigue.",
+        imgs: ["assets/img/cs/grateo-17.jpg", "assets/img/cs/grateo-18.jpg"]
+      },
+      {
+        h: "The final product",
+        text: "Twist → Grate → Collect.",
+        imgs: ["assets/img/cs/grateo-19.jpg", "assets/img/cs/grateo-20.jpg", "assets/img/grateo.jpg"]
       }
     ],
     links: []
