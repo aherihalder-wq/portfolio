@@ -466,7 +466,7 @@ const PROJECTS = [
     outcomeImg: "assets/img/projector-concept.jpg",
     // A video shown right after the two panels. For a Google Drive video, keep the sharing on
     // "Anyone with the link" and use the link ending in /preview. Remove this line for no video.
-    video: { title: "See it working", note: "The full interaction, from inserting the ID card to controlling the projector, as an animation.", src: "https://drive.google.com/file/d/1ou3CaU7yUCeHYks9YarTM22cZBSLSSb6/preview", link: "https://drive.google.com/file/d/1ou3CaU7yUCeHYks9YarTM22cZBSLSSb6/view" },
+    video: { title: "See it working", note: "The full interaction, from inserting the ID card to controlling the projector. It plays on a loop, like a GIF.", src: "assets/video/projector-loop.mp4", poster: "assets/video/projector-poster.jpg", link: "https://drive.google.com/file/d/1ou3CaU7yUCeHYks9YarTM22cZBSLSSb6/view", linkLabel: "Watch with sound" },
     story: [
       {
         h: "Why the projector",
