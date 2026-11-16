@@ -333,6 +333,7 @@ const PROJECTS = [
       },
       {
         h: "Taking an existing slicer apart",
+        big: true,
         text: "I took apart a typical twist slicer to understand every part and how people use and clean it.",
         points: [
           "Parts: collector lid, dry fruit loading chamber, stainless steel cutting blade, body, O-ring lock and twisting grip cap",
@@ -365,6 +366,7 @@ const PROJECTS = [
       },
       {
         h: "How the mechanism works",
+        big: true,
         points: [
           "Dry fruits sit in the chamber where the blades attach",
           "A flap inside the body holds the nuts so they don't spin with the cap",
@@ -375,13 +377,14 @@ const PROJECTS = [
       },
       {
         h: "Interaction and body strain",
+        big: true,
         text: "Watching people use the slicer showed where the effort really goes. The motion breaks into a cycle that repeats until the fruit is cut: grip, twist, release, reposition, repeat.",
         points: [
           "Continuous rotation creates localised stress on the wrist joint",
           "Hard dry fruits resist the blade, pushing force up to the elbow and shoulder",
           "The single-direction motion means half of every hand movement is wasted"
         ],
-        imgs: ["assets/img/cs/grateo-10.jpg", "assets/img/cs/grateo-11.jpg"]
+        imgs: ["assets/img/cs/grateo-11.jpg", "assets/img/cs/grateo-10.jpg"]
       },
       {
         h: "Pain points and design brief",
@@ -396,16 +399,19 @@ const PROJECTS = [
       },
       {
         h: "Brainstorming and ideation",
+        big: true,
         text: "I sketched many body forms, then explored blade, flap and lid details until the bi-directional idea took shape.",
         imgs: ["assets/img/cs/grateo-13.jpg", "assets/img/cs/grateo-14.jpg"]
       },
       {
         h: "Final concept",
+        big: true,
         text: "The final concept keeps the familiar stacked form (grip cap, blade, body and container) and changes how it moves.",
         imgs: ["assets/img/cs/grateo-16.jpg"]
       },
       {
         h: "Key design innovations",
+        big: true,
         points: [
           "Blade: the old single-direction blade needs full rotation; GRATEO's six slits with opposite angles cut in both directions",
           "Flaps: one flap only grips in one direction; two opposite flaps grip in both twist directions",
@@ -417,6 +423,7 @@ const PROJECTS = [
       },
       {
         h: "The final product",
+        big: true,
         text: "Twist → Grate → Collect.",
         imgs: ["assets/img/cs/grateo-19.jpg", "assets/img/cs/grateo-20.jpg", "assets/img/grateo.jpg"]
       }

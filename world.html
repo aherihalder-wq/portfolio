@@ -296,7 +296,7 @@ dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js"></script>
+<script src="content.js?v=20261116"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -391,9 +391,9 @@ function openCase(pid) {
   const list = WORLDS[wid].list;
   const next = list[(list.findIndex(x => x.id === pid) + 1) % list.length];
   const story = p.story || [];
-  const imgs = arr => {
+  const imgs = (arr, big) => {
     const n = arr.length; if (!n) return "";
-    return '<div class="cs-imgs ' + (n === 1 ? "one" : n % 2 ? "odd" : "") + '">' +
+    return '<div class="cs-imgs ' + (big || n === 1 ? "one" : n % 2 ? "odd" : "") + '">' +
       arr.map(src => '<a href="' + esc(src) + '" target="_blank" rel="noopener" data-cursor="Zoom"><img src="' + esc(src) + '" alt="" loading="lazy"></a>').join("") + '</div>';
   };
   $("#case-kind").textContent = p.kind + (p.status ? " · " + p.status : "");
@@ -438,7 +438,7 @@ function openCase(pid) {
     h += '<section class="cs-sec" id="cs-' + i + '"><div class="cs-label"><div class="cs-num">' + pad2(i + 1) + '</div><h3>' + esc(s.h) + '</h3></div><div class="cs-content">' +
       (s.text ? '<p>' + esc(s.text) + '</p>' : "") +
       ((s.points || []).length ? '<ul class="cs-points">' + s.points.map(t => '<li>' + esc(t) + '</li>').join("") + '</ul>' : "") +
-      imgs(s.imgs || []) + (s.cap ? '<p class="cs-cap">' + esc(s.cap) + '</p>' : "") + '</div></section>';
+      imgs(s.imgs || [], s.big) + (s.cap ? '<p class="cs-cap">' + esc(s.cap) + '</p>' : "") + '</div></section>';
   });
   // ---- optional clickable prototype at the end
   const pr = p.prototype;
@@ -489,6 +489,6 @@ dlg.addEventListener("scroll", () => {
 $("#close").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 </script>
-<script src="cursor.js"></script>
+<script src="cursor.js?v=20261116"></script>
 </body>
 </html>

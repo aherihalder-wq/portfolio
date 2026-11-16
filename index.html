@@ -464,8 +464,8 @@ html.anim [data-split].in .ln i{transform:none; transition:transform 1.1s cubic-
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js"></script>
-<script src="icons.js"></script>
+<script src="content.js?v=20261116"></script>
+<script src="icons.js?v=20261116"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -754,6 +754,6 @@ $("#copy").addEventListener("click", () => {
   });
 })();
 </script>
-<script src="cursor.js"></script>
+<script src="cursor.js?v=20261116"></script>
 </body>
 </html>
