@@ -419,7 +419,8 @@ const PROJECTS = [
           "Motion: a short back-and-forth twist replaces full rotation"
         ],
         text: "Impact: minimal wrist strain, no elbow or shoulder involvement, faster cutting and less fatigue.",
-        imgs: ["assets/img/cs/grateo-17.jpg", "assets/img/cs/grateo-18.jpg"]
+        imgs: ["assets/img/cs/grateo-17-parts.jpg", "assets/img/cs/grateo-18.jpg"],
+        cap: "Exploded view: grip cap, collector, two-way blade, body with two flaps, and twist base."
       },
       {
         h: "The final product",

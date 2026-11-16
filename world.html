@@ -296,7 +296,7 @@ dialog.case::backdrop{background:rgba(5,6,10,.8); backdrop-filter:blur(4px)}
 </dialog>
 
 <!-- All your text, links and projects are in content.js -->
-<script src="content.js?v=20261116"></script>
+<script src="content.js?v=20261116b"></script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
@@ -489,6 +489,6 @@ dlg.addEventListener("scroll", () => {
 $("#close").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 </script>
-<script src="cursor.js?v=20261116"></script>
+<script src="cursor.js?v=20261116b"></script>
 </body>
 </html>
